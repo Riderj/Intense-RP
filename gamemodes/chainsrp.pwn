@@ -1096,7 +1096,7 @@ stock ClearChar(playerid)
 	// VIP Name
 	format(VIPName[playerid], MAX_PLAYER_NAME, "");
 	// Enum
-    PlayerInfo[playerid][pLevel] = 1; PlayerInfo[playerid][pUpgradePoints] = 0; PlayerInfo[playerid][pArmorUpgrade] = 0; PlayerInfo[playerid][pMinutes] = 0; PlayerInfo[playerid][pExp] = 0; PlayerInfo[playerid][pTMinutes] = 0; PlayerInfo[playerid][pHours] = 0; PlayerInfo[playerid][pLoggedIn] = 0; PlayerInfo[playerid][pSpawn] = 0; PlayerInfo[playerid][pGender] = 0; PlayerInfo[playerid][pAge] = 0; PlayerInfo[playerid][pMoney] = 0; PlayerInfo[playerid][pModel] = 0; PlayerInfo[playerid][pDay] = 0;
+    PlayerInfo[playerid][pLevel] = 1; PlayerInfo[playerid][pUpgradePoints] = 0; PlayerInfo[playerid][pArmorUpgrade] = 0; PlayerInfo[playerid][pMinutes] = 0; PlayerInfo[playerid][pExp] = 0; PlayerInfo[playerid][pTMinutes] = 0; PlayerInfo[playerid][pHours] = 0; PlayerInfo[playerid][pLoggedIn] = 0; PlayerInfo[playerid][pSpawn] = 0; PlayerInfo[playerid][pGender] = 0; PlayerInfo[playerid][pAge] = 0; PlayerInfo[playerid][pMoney] = 1250; PlayerInfo[playerid][pModel] = 0; PlayerInfo[playerid][pDay] = 0;
 	PlayerInfo[playerid][pAdmin] = 0; PlayerInfo[playerid][pBanned] = 0; PlayerInfo[playerid][pX]  = 0; PlayerInfo[playerid][pY] = 0; PlayerInfo[playerid][pZ] = 0; PlayerInfo[playerid][pInt] = 0; PlayerInfo[playerid][pVIP] = 0; PlayerInfo[playerid][pVIPDay] = 0; PlayerInfo[playerid][pVIPMonth] = 0; PlayerInfo[playerid][pVIPHour] = 0; PlayerInfo[playerid][pZombie] = 0; PlayerInfo[playerid][pZInfected] = 0;
 	PlayerInfo[playerid][pVW] = 0; PlayerInfo[playerid][pFac] = 0; PlayerInfo[playerid][pFacRank] = 0; PlayerInfo[playerid][pFacLeader] = 0; PlayerInfo[playerid][pHospital] = 0; PlayerInfo[playerid][pFacDuty] = 0; PlayerInfo[playerid][pFightStyle] = 0; PlayerInfo[playerid][pFacMod] = 0; PlayerInfo[playerid][pBanAppealer] = 0;
 	PlayerInfo[playerid][pFacDiv] = 0; PlayerInfo[playerid][pFacDivLeader] = 0; PlayerInfo[playerid][pBiz] = 0; PlayerInfo[playerid][pVBiz] = 0; PlayerInfo[playerid][pJob] = 0; PlayerInfo[playerid][pVIPJob] = 0; PlayerInfo[playerid][pTPackages] = 0; PlayerInfo[playerid][pHasCellphone] = 0; PlayerInfo[playerid][pCookies] = 0;
@@ -18938,35 +18938,28 @@ CMD:clearcontract(playerid, params[])
 
 CMD:pm(playerid, params[])
 {
-	new playerb, string[128], text[128];
-	if(!IsPlayerLoggedIn(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You need to login first before using any command.");
-   	if(PlayerInfo[playerid][pAdmin] < 1 && PlayerInfo[playerid][pHelper] < 1 && PlayerInfo[playerid][pMapper] < 4) return SendClientMessage(playerid, COLOR_GREY, "You are not authorized to use this command.");
-	if(sscanf(params, "us[128]", playerb, text)) return SendClientMessage(playerid, COLOR_WHITE, "[Usage]: /pm [playerid] [text]");
-	if(AntiAdv(playerid, params)) return 1;
-	if(!strlen(text)) return SendClientMessage(playerid, COLOR_GREY, "You haven't entered any text to PM.");
-	if(!IsPlayerLoggedIn(playerb)) return SendClientMessage(playerid, COLOR_GREY, "Invalid player id.");
-	format(string, sizeof(string), "PM to %s: %s", RPN(playerb), text);
-	SendClientMessage(playerid, COLOR_YELLOW, string);
-	format(string, sizeof(string), "PM from %s: %s", RPN(playerid), text);
-	SendClientMessage(playerb, COLOR_YELLOW, string);
-	format(string, sizeof(string), "PM from %s to %s: %s", RPN(playerid), RPN(playerb), text);
-	Log("logs/pm.log", string);
-	foreach(Player, i)
-	{
-	    if(PlayerInfo[i][pAdmin] >= 6 && PMs[i] && i != playerid && i != playerb)
-	    {
-	        format(string, sizeof(string), "[PM] %s to %s: %s", RPN(playerid), RPN(playerb), text);
-	        SendClientMessage(i, COLOR_YELLOW, string);
-	    }
-	}
-	foreach(Player, i)
-	{
-	    if(PlayerInfo[i][pHelper] >= 1)
-	    {
-	        if(!HelpTime[playerb]) return SendClientMessage(playerid, COLOR_GREY, "This player hasn't requested any help.");
-	    }
-	}
-	return 1;
+ new playerb, string[128], text[128];
+ if(!IsPlayerLoggedIn(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You need to login first before using any command.");
+//    if(PlayerInfo[playerid][pAdmin] < 1 && PlayerInfo[playerid][pHelper] < 1 && PlayerInfo[playerid][pMapper] < 4) return SendClientMessage(playerid, COLOR_GREY, "You are not authorized to use this command.");
+ if(sscanf(params, "us[128]", playerb, text)) return SendClientMessage(playerid, COLOR_WHITE, "[Usage]: /pm [playerid] [text]");
+ if(AntiAdv(playerid, params)) return 1;
+ if(!strlen(text)) return SendClientMessage(playerid, COLOR_GREY, "You haven't entered any text to PM.");
+ if(!IsPlayerLoggedIn(playerb)) return SendClientMessage(playerid, COLOR_GREY, "Invalid player id.");
+ format(string, sizeof(string), "PM to %s: %s", RPN(playerb), text);
+ SendClientMessage(playerid, COLOR_YELLOW, string);
+ format(string, sizeof(string), "PM from %s: %s", RPN(playerid), text);
+ SendClientMessage(playerb, COLOR_YELLOW, string);
+ format(string, sizeof(string), "PM from %s to %s: %s", RPN(playerid), RPN(playerb), text);
+ Log("logs/pm.log", string);
+ foreach(Player, i)
+ {
+     if(IsPlayerLoggedIn(i))
+     {
+         format(string, sizeof(string), "[PM] %s to %s: %s", RPN(playerid), RPN(playerb), text);
+         SendClientMessage(i, COLOR_YELLOW, string);
+     }
+ }
+ return 1;
 }
 
 
@@ -24764,8 +24757,8 @@ public OnPlayerUpdate(playerid)
 	    if(GetPlayerState(playerid) == PLAYER_STATE_SPECTATING)
 	    {
 	        new string[64];
-            format(string,sizeof(string),"~n~~n~~n~~n~~n~~n~~n~~n~~r~%s's Ping: ~w~%d", RPN(Specid[playerid]), GetPlayerPing(Specid[playerid]));
-			GameTextForPlayer(playerid, string,1000, 3);
+            /*format(string,sizeof(string),"~n~~n~~n~~n~~n~~n~~n~~n~~r~%s's Ping: ~w~%d", RPN(Specid[playerid]), GetPlayerPing(Specid[playerid]));
+			GameTextForPlayer(playerid, string,1000, 3);*/
 	    }
 	    // Money Anticheat
 		if(GetPlayerMoney(playerid) != PlayerInfo[playerid][pMoney])
@@ -24933,6 +24926,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             {
              SendClientMessage(playerid, COLOR_GREY, "Password can't be shorter than 4 characters.");
              SSSShowDialog(playerid, 1);
+			 SpawnPlayer(playerid);
              return 1;
             }
 	        if(strlen(inputtext) > 256)
@@ -33026,22 +33020,26 @@ stock SpawnChar(playerid)
 	        SendClientMessage(playerid, COLOR_WHITE, " An administrator has deleted your gate in slot 3 while you were offline.");
 	    }
 	    // Spawning
-	    if(PlayerInfo[playerid][pX] == 0 && PlayerInfo[playerid][pY] == 0 && PlayerInfo[playerid][pZ] == 0)
+	 	if(PlayerInfo[playerid][pX] == 0 && PlayerInfo[playerid][pY] == 0 && PlayerInfo[playerid][pZ] == 0)
 	    {
+	        PlayerInfo[playerid][pX] = 958.9146;
+	        PlayerInfo[playerid][pY] = -1411.4772;
+	        PlayerInfo[playerid][pZ] = 13.3833;
+	        SetPlayerInterior(playerid, 0);
+	        SetPlayerVirtualWorld(playerid, 0);
 	        SetPlayerPos(playerid, 958.9146,-1411.4772,13.3833); // THE SPAWN D
 	        SetPlayerFacingAngle(playerid, 93.3274);
 	        SetCameraBehindPlayer(playerid);
-	        SetPlayerInterior(playerid, 0);
-	        SetPlayerVirtualWorld(playerid, 0);
+	        
 	    }
-	    else
+	   else
 	    {
 		    SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
 		    SetPlayerInterior(playerid, PlayerInfo[playerid][pInt]);
 		    SetCameraBehindPlayer(playerid);
 		    SetPlayerPos(playerid, PlayerInfo[playerid][pX], PlayerInfo[playerid][pY], PlayerInfo[playerid][pZ]);
 		    // HP and Armor
-			if(PlayerInfo[playerid][pHealth] <= 0) PlayerInfo[playerid][pHealth] = 1;
+			if(PlayerInfo[playerid][pHealth] <= 0) PlayerInfo[playerid][pHealth] = 100;
 			SetPlayerHealth(playerid, PlayerInfo[playerid][pHealth]);
 			SetPlayerArmour(playerid, PlayerInfo[playerid][pArmor]);
 	    }
@@ -33982,13 +33980,13 @@ public Stoned(playerid)
 forward Tut1(playerid);
 public Tut1(playerid)
 {
-	for(new i=0; i<101; i++)
+	for(new i=0; i<103; i++)
 	{
 	    SendClientMessageToAll(COLOR_WHITE, "");
 	}
 	TextDrawShowForPlayer(playerid, TutorialTD);
 	new params[1];
-    cmd_hangup(playerid, params);
+    //cmd_hangup(playerid, params);
 	SetPlayerInterior(playerid, 0);
 	SetPlayerVirtualWorld(playerid, 94375);
     TogglePlayerControllable(playerid, 0);
@@ -34117,7 +34115,7 @@ public TutFinal(playerid)
 	SendClientMessage(playerid, COLOR_WHITE, "Remember, if you have any questions, use /newbie or /helpme.");
 	SendClientMessage(playerid, COLOR_WHITE, "You can also type /help for a list of commands.");
 	PlayerInfo[playerid][pTutorial] = 1;
-	SpawnChar(playerid);
+ 	SpawnChar(playerid);
 	TogglePlayerControllable(playerid, 1);
 	SetPlayerVirtualWorld(playerid, 0);
 	SetPlayerInterior(playerid, 0);
@@ -34125,12 +34123,11 @@ public TutFinal(playerid)
 	// Starter Package
 	PlayerInfo[playerid][pNew] = 1;
 	PlayerInfo[playerid][pModel] = 299;
-	SetPlayerSkin(playerid, 299);
+	SetPlayerSkin(playerid, 208);
 	PlayerInfo[playerid][pFightStyle] = FIGHT_STYLE_NORMAL;
-		for(new i=0; i<100; i++)
-	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
-	}
+	
+	TogglePlayerSpectating(playerid,0);
+	PlayerSpectatePlayer(playerid);
 	return 1;
 }
 
