@@ -3355,7 +3355,7 @@ public OnGameModeInit()
 	LoadCsgObjects();
 	LoadFactions();
 	LoadFamilies();
-	LoadPoints();
+	//LoadPoints();
 	LoadBiz();
 	LoadHouses();
 	LoadGarages();
@@ -3540,7 +3540,10 @@ public OnGameModeInit()
 	//
 	// FIRST TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[6] = TextDrawCreate(166.000000, 331.000000, "This is a roleplay server, which means that you take on");
 	TextDrawBackgroundColor(TutTxtDraw[6], 255);
 	TextDrawFont(TutTxtDraw[6], 1);
@@ -3589,7 +3592,10 @@ public OnGameModeInit()
 	//
 	// SECOND TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[11] = TextDrawCreate(166.000000, 331.000000, "You can earn money by manyways.");
 	TextDrawBackgroundColor(TutTxtDraw[11], 255);
 	TextDrawFont(TutTxtDraw[11], 1);
@@ -3638,7 +3644,10 @@ public OnGameModeInit()
 	//
 	// THIRD TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[16] = TextDrawCreate(166.000000, 331.000000, "There are several law enforcement agencies such as the ~b~NYPD ~w~and the ~b~FBI~w~, who enforce");
 	TextDrawBackgroundColor(TutTxtDraw[16], 255);
 	TextDrawFont(TutTxtDraw[16], 1);
@@ -3696,7 +3705,10 @@ public OnGameModeInit()
 	//
 	// FOURTH TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[22] = TextDrawCreate(166.000000, 331.000000, "If you get injured then you can either ~r~/accept death ~w~or you can ~r~/service ems ~w~and wait");
 	TextDrawBackgroundColor(TutTxtDraw[22], 255);
 	TextDrawFont(TutTxtDraw[22], 1);
@@ -3745,7 +3757,10 @@ public OnGameModeInit()
 	//
 	// FIFTH TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[27] = TextDrawCreate(166.000000, 331.000000, "There are also ~r~/families ~w~which are basically criminal groups. There are street gangs and");
 	TextDrawBackgroundColor(TutTxtDraw[27], 255);
 	TextDrawFont(TutTxtDraw[27], 1);
@@ -3794,7 +3809,10 @@ public OnGameModeInit()
 	//
 	// SIXTH TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[32] = TextDrawCreate(166.000000, 331.000000, "You can smuggle materials packages to get materials, which then allows you to make");
 	TextDrawBackgroundColor(TutTxtDraw[32], 255);
 	TextDrawFont(TutTxtDraw[32], 1);
@@ -3843,7 +3861,10 @@ public OnGameModeInit()
 	//
 	// SEVENTH TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[37] = TextDrawCreate(166.000000, 331.000000, "You can also smuggle drugs from Blueberry into Los Santos. This requires you to have");
 	TextDrawBackgroundColor(TutTxtDraw[37], 255);
 	TextDrawFont(TutTxtDraw[37], 1);
@@ -3892,7 +3913,10 @@ public OnGameModeInit()
 	//
 	// EIGHT TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[42] = TextDrawCreate(166.000000, 331.000000, "This is a car dealership. There are several throughout the city where you can purchase");
 	TextDrawBackgroundColor(TutTxtDraw[42], 255);
 	TextDrawFont(TutTxtDraw[42], 1);
@@ -3950,7 +3974,10 @@ public OnGameModeInit()
 	//
 	// NINTH TUTORIAL TEXT
 	//
-
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TutTxtDraw[48] = TextDrawCreate(166.000000, 331.000000, "We are sure you want to get to playing already, so the tutorial is almost done!");
 	TextDrawBackgroundColor(TutTxtDraw[48], 255);
 	TextDrawFont(TutTxtDraw[48], 1);
@@ -4078,6 +4105,10 @@ public OnGameModeInit()
 //	f = LoadModelSelectionMenu("planes.txt");
 	//skinlist = LoadModelSelectionMenu("skins.txt");
 	//planelist = LoadModelSelectionMenu("planes.txt");
+		for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	return 1;
 }
 
@@ -4477,6 +4508,14 @@ public OnPlayerConnect(playerid)
 	    return 1;
 	}
 	return 1;
+}
+
+stock startTutorial(playerid){
+
+}
+
+stock SpawnNewbie(playerid){
+	startTutorial(playerid);
 }
 
 public OnPlayerRequestClass(playerid, classid)
@@ -18234,7 +18273,7 @@ CMD:aod(playerid, params[])
 	if(PlayerInfo[playerid][pAdmin] < 1) return SendClientMessage(playerid, COLOR_GREY, "You are not authorized to use this command.");
 	if(!aDuty[playerid])
 	{
-        format(string, sizeof(string), "AdmWarn: %s has went on admin duty.", RPN(playerid));
+        format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {FF17CC}ON DUTY.", RPN(playerid));
 		SendAdminMessage(COLOR_DARKRED, 1, string);
 		aDuty[playerid] = 1;
 	    format(string, sizeof(string), "%s", RPALN(playerid));
@@ -18249,21 +18288,16 @@ CMD:aod(playerid, params[])
         if(PlayerInfo[playerid][pAdmin] == 8) aDutyText[playerid] = CreateDynamic3DTextLabel(string, COLOR_LIGHTRED, 0, 0, -20, 25, playerid);
         Streamer_SetFloatData(STREAMER_TYPE_3D_TEXT_LABEL, aDutyText[playerid] , E_STREAMER_ATTACH_OFFSET_Z, 0.25);
         PlayerInfo[playerid][pModel] = GetPlayerSkin(playerid);
-        GiveDodWeapon(playerid, 38, 11999);
-        SetPlayerSkin(playerid, 294);
 	}
 	else
 	{
 	    if(Spec[playerid]) return SendClientMessage(playerid, COLOR_GREY, "You can't go off admin duty while spectating someone.");
 		aDuty[playerid] = 0;
-	    format(string, sizeof(string), "AdmWarn: %s has went off admin duty.", RPN(playerid));
+	    format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {FF0000}OFF DUTY.", RPN(playerid));
 	    SendAdminMessage(COLOR_DARKRED, 1, string);
 		DestroyDynamic3DTextLabel(aDutyText[playerid]);
 		new oldskinsss;
 		oldskinsss = PlayerInfo[playerid][pModel];
-		SetPlayerSkin(playerid, oldskinsss);
-		ResetPlayerWeapons(playerid);
-	    ResetDodWeapons(playerid);
 	}
 	return 1;
 }
@@ -24883,7 +24917,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    if(response)
 	    {
 	        SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {FFFFFF}You have chosen to complete registeration, Please wait until the tutorial to load.");
-         SetTimerEx("Tut1", 2000, false, "i", playerid);
+        	 SetTimerEx("Tut1", 2000, false, "i", playerid);
 	    }
 	    else
 	    {
@@ -25067,7 +25101,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SendClientMessage(playerid, COLOR_LIGHTRED, string);
 	                PlayerInfo[playerid][pLoggedIn] = 1;
 					PlayerInfo[playerid][pSpawn] = 1;
-					SpawnPlayer(playerid);
+					SSSShowDialog(playerid,0);
 		        }
 	        }
 	    }
@@ -32391,7 +32425,7 @@ stock SSSShowDialog(playerid, dialogid)
 	{
 	    case 0: // Tutorial Dialog
 		{
-			ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "Registration","Do you wish to complete registeration?", "Yes", "No");
+			ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "Tutorial","Are you ready for the tutorial?", "Yes", "");
 		}
 		case 1: // Register
 		{
@@ -33948,6 +33982,10 @@ public Stoned(playerid)
 forward Tut1(playerid);
 public Tut1(playerid)
 {
+	for(new i=0; i<101; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	TextDrawShowForPlayer(playerid, TutorialTD);
 	new params[1];
     cmd_hangup(playerid, params);
@@ -33966,6 +34004,10 @@ public Tut1(playerid)
 forward Tut2(playerid);
 public Tut2(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     /*InterpolateCameraPos(playerid, 1668.9432,-1458.1198,120.6119, 1506.6499,-1675.8396,41.2007, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid, 1586.5640,-1281.9943,120.6119, 1554.6344,-1675.5366,16.1953, 3000, CAMERA_MOVE);*/
 	SetPlayerCameraPos(playerid,2324.685303, -2340.955078, 15.422848);
@@ -33982,6 +34024,10 @@ public Tut2(playerid)
 forward Tut3(playerid);
 public Tut3(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     //InterpolateCameraPos(playerid, 1506.6499,-1675.8396,41.2007, 2072.5891,-1928.0503,13.3052, 3000, CAMERA_MOVE);
     //InterpolateCameraLookAt(playerid, 1554.6344,-1675.5366,16.1953, 2072.5891,-1928.0503,13.3052, 3000, CAMERA_MOVE);
 	SetPlayerCameraPos(playerid,1508.442627, -1614.123291, 14.966317);
@@ -33999,6 +34045,10 @@ public Tut3(playerid)
 forward Tut4(playerid);
 public Tut4(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     /*InterpolateCameraPos(playerid, 1444.9666,-1709.8527,42.3163, 2441.1738,-1698.3149,31.4247, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid, 1483.7808,-1762.6996,18.7958, 2507.3250,-1648.5522,13.8510, 3000, CAMERA_MOVE);*/
 	SetPlayerCameraPos(playerid,1404.699707, -1351.813965, 18.349072);
@@ -34016,6 +34066,10 @@ public Tut4(playerid)
 forward Tut5(playerid);
 public Tut5(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     /*InterpolateCameraPos(playerid, 2441.1738,-1698.3149,31.4247, 1733.3695,2300.4736,28.1169, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid,2507.3250,-1648.5522,13.8510, 1677.3669,2340.1497,9.8972, 3000, CAMERA_MOVE);*/
 	SetPlayerCameraPos(playerid,1303.166504, -925.366211, 46.389950);
@@ -34032,6 +34086,10 @@ public Tut5(playerid)
 forward Tut6(playerid);
 public Tut6(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     /*InterpolateCameraPos(playerid, 2441.1738,-1698.3149,31.4247, 1733.3695,2300.4736,28.1169, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid,2507.3250,-1648.5522,13.8510, 1677.3669,2340.1497,9.8972, 3000, CAMERA_MOVE);*/
 	SetPlayerCameraPos(playerid, 1470.760, -892.135, 59.225);
@@ -34049,6 +34107,10 @@ public Tut6(playerid)
 forward TutFinal(playerid);
 public TutFinal(playerid)
 {
+	for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
     SendClientMessage(playerid, COLOR_ORANGE, "End of the Tutorial");
     SendClientMessage(playerid, COLOR_WHITE, "This is the end of the tutorial.");
 	SendClientMessage(playerid, COLOR_WHITE, "Hopefully, you'll understand these system more thoroughly after the tutorial.");
@@ -34065,6 +34127,10 @@ public TutFinal(playerid)
 	PlayerInfo[playerid][pModel] = 299;
 	SetPlayerSkin(playerid, 299);
 	PlayerInfo[playerid][pFightStyle] = FIGHT_STYLE_NORMAL;
+		for(new i=0; i<100; i++)
+	{
+	    SendClientMessageToAll(COLOR_WHITE, "");
+	}
 	return 1;
 }
 
