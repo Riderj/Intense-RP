@@ -1,0 +1,3 @@
+[22:01:12] Plugin succesfully loaded!
+[22:01:24] Plugin succesfully loaded!
+[17:49:04] Plugin succesfully loaded!
