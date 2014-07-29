@@ -33030,6 +33030,7 @@ stock SpawnChar(playerid)
 	        SetPlayerPos(playerid, 958.9146,-1411.4772,13.3833); // THE SPAWN D
 	        SetPlayerFacingAngle(playerid, 93.3274);
 	        SetCameraBehindPlayer(playerid);
+	        TogglePlayerSpectating(playerid,0);
 	        
 	    }
 	   else
@@ -33982,7 +33983,7 @@ public Tut1(playerid)
 {
 	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
 	TextDrawShowForPlayer(playerid, TutorialTD);
 	new params[1];
@@ -34002,9 +34003,9 @@ public Tut1(playerid)
 forward Tut2(playerid);
 public Tut2(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     /*InterpolateCameraPos(playerid, 1668.9432,-1458.1198,120.6119, 1506.6499,-1675.8396,41.2007, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid, 1586.5640,-1281.9943,120.6119, 1554.6344,-1675.5366,16.1953, 3000, CAMERA_MOVE);*/
@@ -34022,9 +34023,9 @@ public Tut2(playerid)
 forward Tut3(playerid);
 public Tut3(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     //InterpolateCameraPos(playerid, 1506.6499,-1675.8396,41.2007, 2072.5891,-1928.0503,13.3052, 3000, CAMERA_MOVE);
     //InterpolateCameraLookAt(playerid, 1554.6344,-1675.5366,16.1953, 2072.5891,-1928.0503,13.3052, 3000, CAMERA_MOVE);
@@ -34043,9 +34044,9 @@ public Tut3(playerid)
 forward Tut4(playerid);
 public Tut4(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     /*InterpolateCameraPos(playerid, 1444.9666,-1709.8527,42.3163, 2441.1738,-1698.3149,31.4247, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid, 1483.7808,-1762.6996,18.7958, 2507.3250,-1648.5522,13.8510, 3000, CAMERA_MOVE);*/
@@ -34064,9 +34065,9 @@ public Tut4(playerid)
 forward Tut5(playerid);
 public Tut5(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     /*InterpolateCameraPos(playerid, 2441.1738,-1698.3149,31.4247, 1733.3695,2300.4736,28.1169, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid,2507.3250,-1648.5522,13.8510, 1677.3669,2340.1497,9.8972, 3000, CAMERA_MOVE);*/
@@ -34084,9 +34085,9 @@ public Tut5(playerid)
 forward Tut6(playerid);
 public Tut6(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     /*InterpolateCameraPos(playerid, 2441.1738,-1698.3149,31.4247, 1733.3695,2300.4736,28.1169, 3000, CAMERA_MOVE);
     InterpolateCameraLookAt(playerid,2507.3250,-1648.5522,13.8510, 1677.3669,2340.1497,9.8972, 3000, CAMERA_MOVE);*/
@@ -34105,9 +34106,9 @@ public Tut6(playerid)
 forward TutFinal(playerid);
 public TutFinal(playerid)
 {
-	for(new i=0; i<100; i++)
+	for(new i=0; i<103; i++)
 	{
-	    SendClientMessageToAll(COLOR_WHITE, "");
+	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
     SendClientMessage(playerid, COLOR_ORANGE, "End of the Tutorial");
     SendClientMessage(playerid, COLOR_WHITE, "This is the end of the tutorial.");
@@ -34126,8 +34127,6 @@ public TutFinal(playerid)
 	SetPlayerSkin(playerid, 208);
 	PlayerInfo[playerid][pFightStyle] = FIGHT_STYLE_NORMAL;
 	
-	TogglePlayerSpectating(playerid,0);
-	PlayerSpectatePlayer(playerid);
 	return 1;
 }
 
@@ -34285,7 +34284,7 @@ public Clock()
 	    {
 	    	PointBC[idx] = 0;
 	    }
-		for(new idx = 0; idx < MAX_POINTS; idx++)
+	/*	for(new idx = 0; idx < MAX_POINTS; idx++)
 		{
 			if(PointInfo[idx][pTime]) PointInfo[idx][pTime] --;
 			if(!PointInfo[idx][pTime] && !PointBC[idx])
@@ -34299,7 +34298,7 @@ public Clock()
 		    	PointInfo[idx][pText] = CreateDynamic3DTextLabel("Point\n/capture", COLOR_WHITE, PointInfo[idx][pX], PointInfo[idx][pY], PointInfo[idx][pZ]+0.3, 15);
 
 			}
-	    }
+	    }*/
 	}
 	return 1;
 }
