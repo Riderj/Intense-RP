@@ -26457,8 +26457,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	            case 0: // Driving
 				{
 				    if(PlayerInfo[playerid][pCarLic]) return SendClientMessage(playerid, COLOR_GREY, "You already have a drivers license.");
-                    if(PlayerInfo[playerid][pMoney] < 5000) return SendClientMessage(playerid, COLOR_GREY, "You've got insufficient funds. ($5,000)");
-	                GiveDodMoney(playerid, -5000);
+                    if(PlayerInfo[playerid][pMoney] < 1000) return SendClientMessage(playerid, COLOR_GREY, "You've got insufficient funds. ($1,000)");
+	                GiveDodMoney(playerid, -1000);
 					LicenseTest[playerid] = 1;
                  	SendClientMessage(playerid,COLOR_LIGHTBLUE,"* Drivers Center: You've paid $5000 for your driving test.");
                     GameTextForPlayer(playerid, "~r~Get to a DMV car to being your test!", 3500, 3);
