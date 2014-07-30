@@ -4369,7 +4369,7 @@ public OnPlayerConnect(playerid)
 	new string[128],name[128];
 	GetPlayerName(playerid,name,sizeof(name));
 	format(string,sizeof(string),"%s has joined the server.",name);
-	SendClientMessageToAll(0x333333,string);
+	SendClientMessageToAll(0xB2B2B2,string);
 
     format(string,sizeof(string), "http://translate.google.com/translate_tts?q=%s has connected to the server", RPN(playerid));
     RemoveBuildingForPlayer(playerid, 4222, 1575.9375, -1516.5781, 36.6797, 0.25);
@@ -12351,7 +12351,7 @@ CMD:door(playerid, params[])
 {
 	new string[128];
     if(!IsPlayerLoggedIn(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You need to login first before using any command.");
-	if(!IsACop(playerid) && !IsFBI(playerid) && !IsNG(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You are not a LEO.");
+	if(!IsACop(playerid) && !IsFBI(playerid) && !IsNG(playerid) && !IsChief(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You are not a LEO.");
 	if(IsPlayerInRangeOfPoint(playerid, 3, 246.381317,72.578338,1003.706604) || IsPlayerInRangeOfPoint(playerid, 3, 246.381317,72.292190,1003.706604))
 	{
 	    if(!NYPDLobbyStatus) // NYPD LOBBY
@@ -12550,6 +12550,7 @@ CMD:door(playerid, params[])
 			SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
 			PrDoorStatus2 = 0;
 	    }
+	}else if(IsPlayerInRangeOfPoint(playerid, 3, 1812.0830,-1545.2319,5700.4287)){
 	}
 	else
 	{
@@ -33310,6 +33311,10 @@ stock IsHitman(playerid)
 stock IsFBI(playerid)
 {
 	if(PlayerInfo[playerid][pFac] == 6) return 1;
+	return 0;
+}
+stock IsChief(playerid){
+	if(PlayerInfo[playerid][pFac] == 5) return 1;
 	return 0;
 }
 stock IsNG(playerid)
