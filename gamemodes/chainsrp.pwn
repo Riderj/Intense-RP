@@ -4369,7 +4369,7 @@ public OnPlayerConnect(playerid)
 	new string[128],name[128];
 	GetPlayerName(playerid,name,sizeof(name));
 	format(string,sizeof(string),"%s has joined the server.",name);
-	SendClientMessageToAll(0xFFCC66,string);
+	SendClientMessageToAll(0x333333,string);
 
     format(string,sizeof(string), "http://translate.google.com/translate_tts?q=%s has connected to the server", RPN(playerid));
     RemoveBuildingForPlayer(playerid, 4222, 1575.9375, -1516.5781, 36.6797, 0.25);
@@ -18276,7 +18276,7 @@ CMD:aod(playerid, params[])
 	if(PlayerInfo[playerid][pAdmin] < 1) return SendClientMessage(playerid, COLOR_GREY, "You are not authorized to use this command.");
 	if(!aDuty[playerid])
 	{
-        format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {FF17CC}ON DUTY.", RPN(playerid));
+        format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {009900}ON DUTY.", RPN(playerid));
 		SendAdminMessage(COLOR_DARKRED, 1, string);
 		aDuty[playerid] = 1;
 	    format(string, sizeof(string), "%s", RPALN(playerid));
@@ -33178,7 +33178,7 @@ stock SpawnChar(playerid)
 				SetPlayerInterior(playerid, 0);
 			 	SetPlayerVirtualWorld(playerid, 0);
 			    TogglePlayerControllable(playerid, 0);
-				HospitalTime[playerid] = 30;
+				HospitalTime[playerid] = 10;
 				if(PlayerInfo[playerid][pVIP] >= 2) HospitalTime[playerid] = 1;
 				HospitalCountDown[playerid] = SetTimerEx("HospitalTimer", 1000, false, "d", playerid);
 				if(DayNoDrops == 1)
@@ -34431,7 +34431,7 @@ public HospitalTimer(playerid)
 		    PlayerInfo[playerid][pDeath] ++;
 		    SetPlayerHealth(playerid, 40);
 		    SetPlayerArmour(playerid, 0);
-		    SendClientMessage(playerid, COLOR_MEDIC, "(( You have lost 30 minutes of your IC memory, you don't remember the situation you died in ))");
+		    SendClientMessage(playerid, COLOR_MEDIC, "(( You have lost 10 minutes of your IC memory, you don't remember the situation you died in ))");
 			KillTimer(HospitalCountDown[playerid]);
 			if(PlayerInfo[playerid][pVIP])
 			{
