@@ -18934,16 +18934,25 @@ CMD:clearcontract(playerid, params[])
 }
 
 CMD:getpos(playerid, params[]){
+<<<<<<< HEAD
  new Float:x,Float:y,Float:z,str[256];
  new Text:td;
+=======
+>>>>>>> parent of c6542e6... Another repo for getpos
 	 if(isDrawn == 0){
 	 	isDrawn = 1;
 	 }else{
 		 isDrawn = 0;
-		 TextDrawDestroy(td);
 	 }
+<<<<<<< HEAD
 
  td = TextDrawCreate(200,10,Text:str);
+=======
+	new Float:x,Float:y,Float:z,str[256];
+	new Text:td;
+	
+	td = TextDrawCreate(200,10,Text:str);
+>>>>>>> parent of c6542e6... Another repo for getpos
  	GetPlayerPos(playerid,x,y,z);
 
 	if(isDrawn == 1){
