@@ -26525,6 +26525,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					LicenseTest[playerid] = 1;
                  	SendClientMessage(playerid,COLOR_LIGHTBLUE,"* Drivers Center: You've paid $1000 for your driving test.");
                     GameTextForPlayer(playerid, "~r~Get to a DMV car to being your test!", 3500, 3);
+                    CP[playerid] = 1;
 				}
 
 				case 1: // Flying
@@ -32653,7 +32654,7 @@ stock SSSShowDialog(playerid, dialogid)
 		}
 		case 39: // License
 		{
-		    ShowPlayerDialog(playerid, 39, DIALOG_STYLE_LIST, "Official Licenses","Driving License ($5000)\nFlying License ($10000)", "Choose", "Cancel");
+		    ShowPlayerDialog(playerid, 39, DIALOG_STYLE_LIST, "Official Licenses","Driving License ($1000)\nFlying License ($10000)", "Choose", "Cancel");
 		}
 		case 40: // NYPD Lockers
 		{
