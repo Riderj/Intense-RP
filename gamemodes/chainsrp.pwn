@@ -1,4 +1,4 @@
-#define SERVER_GM_TEXT "Intense V.2.0"
+#define SERVER_GM_TEXT "Intense V.2.1.5"
 #define SERVER_GM_UPDATER "Blade_Longwei"
 
 /* Gamemode Created by Blade_Longwei
@@ -4366,10 +4366,6 @@ HandlePlayerItemSelection(playerid, selecteditem)
 
 public OnPlayerConnect(playerid)
 {
-	new str[256];
-	format(str, sizeof(str), "%s has joined the server.", GetPlayerName(playerid));
-	SendClientMessageToAll(0xFFCC66,str);
-
 	new string[128];
 
     format(string,sizeof(string), "http://translate.google.com/translate_tts?q=%s has connected to the server", RPN(playerid));
@@ -18934,43 +18930,17 @@ CMD:clearcontract(playerid, params[])
 }
 
 CMD:getpos(playerid, params[]){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- new Float:x,Float:y,Float:z,str[256];
- new Text:td;
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
+
+    new Float:x,Float:y,Float:z,str[256];
+	new Text:td;
+	td = TextDrawCreate(200,10,Text:str);
 	 if(isDrawn == 0){
 	 	isDrawn = 1;
 	 }else{
 		 isDrawn = 0;
+		 TextDrawDestroy(td);
 	 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
- td = TextDrawCreate(200,10,Text:str);
-=======
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
-	new Float:x,Float:y,Float:z,str[256];
-	new Text:td;
-	
-	td = TextDrawCreate(200,10,Text:str);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of c6542e6... Another repo for getpos
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
-=======
->>>>>>> parent of c6542e6... Another repo for getpos
  	GetPlayerPos(playerid,x,y,z);
 
 	if(isDrawn == 1){
@@ -20694,8 +20664,8 @@ CMD:bedit(playerid, params[])
 		DestroyDynamicPickup(BizInfo[bizid][bPickup]);
     	BizInfo[bizid][bPickup] = CreateDynamicPickup(1272, 1, BizInfo[bizid][bX], BizInfo[bizid][bY], BizInfo[bizid][bZ], 0);
 		DestroyDynamic3DTextLabel(BizInfo[bizid][bText]);
-        if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s~n~Business Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
-		else format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+        if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+		else format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
     	BizInfo[bizid][bText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, BizInfo[bizid][bX], BizInfo[bizid][bY], BizInfo[bizid][bZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed business ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20707,7 +20677,7 @@ CMD:bedit(playerid, params[])
 		if(!BizInfo[bizid][bType]) return SendClientMessage(playerid, COLOR_GREY, "Invalid business id.");
 		if(strcmp("The State", BizInfo[bizid][bOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned businesses.");
 	    BizInfo[bizid][bPrice] = input;
-	    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[bizid][bOwner], RBT(bizid), input);
+	    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[bizid][bOwner], RBT(bizid), input);
 	    UpdateDynamic3DTextLabelText(BizInfo[bizid][bText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set business ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20809,7 +20779,7 @@ CMD:asellbiz(playerid, params[])
 	Log("logs/business.log", string);
     BizInfo[bizid][bStatus] = 0;
     format(BizInfo[bizid][bOwner], 32, "The State");
-    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[bizid][bOwner], RBT(bizid), BizInfo[bizid][bPrice]);
+    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[bizid][bOwner], RBT(bizid), BizInfo[bizid][bPrice]);
  	UpdateDynamic3DTextLabelText(BizInfo[bizid][bText], COLOR_WHITE, string);
 	return 1;
 }
@@ -20836,7 +20806,7 @@ CMD:creategarage(playerid, params[])
 		    GarageInfo[idx][gY] = Y;
 		    GarageInfo[idx][gZ] = Z;
 		    GarageInfo[idx][gPickup] = CreateDynamicPickup(1318, 1, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ], 0);
-            format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
+            format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
 			GarageInfo[idx][gText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ]+0.3, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created garage ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20943,7 +20913,7 @@ CMD:asellgarage(playerid, params[])
 	SendAdminMessage(COLOR_DARKRED, 1, string);
 	Log("logs/garage.log", string);
     GarageInfo[bizid][gStatus] = 0;
-    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(bizid), GarageInfo[bizid][gPrice]);
+    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(bizid), GarageInfo[bizid][gPrice]);
  	UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	return 1;
 }
@@ -20969,8 +20939,8 @@ CMD:garageedit(playerid, params[])
 		DestroyDynamicPickup(GarageInfo[idx][gPickup]);
     	GarageInfo[idx][gPickup] = CreateDynamicPickup(1318, 1, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ], 0);
 		DestroyDynamic3DTextLabel(GarageInfo[idx][gText]);
-        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
-		else format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
+		else format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 		GarageInfo[idx][gText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed garage ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20984,7 +20954,7 @@ CMD:garageedit(playerid, params[])
 		if(!GarageInfo[idx][gLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid garage id.");
 		if(strcmp("The State", GarageInfo[bizid][gOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned garages.");
 	    GarageInfo[bizid][gPrice] = input;
-	    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(bizid), input);
+	    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(bizid), input);
 		UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set garage ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20998,8 +20968,8 @@ CMD:garageedit(playerid, params[])
     	//if(!GarageInfo[bizid][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
     	if(input < 1 || input > 10) return SendClientMessage(playerid, COLOR_GREY, "Levels are between 1 and 10.");
 	    GarageInfo[bizid][gLevel] = input;
-        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
-		else format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
+		else format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 		UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set garage ID %d's level to %d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21118,7 +21088,7 @@ CMD:createhouse(playerid, params[])
 			HouseInfo[idx][hGun][4] = 0;
 			HouseInfo[idx][hGunAmmo][4] = 0;
 		    HouseInfo[idx][hPickup] = CreateDynamicPickup(1273, 1, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ], 0);
-            format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+            format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 			HouseInfo[idx][hText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ]+0.3, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created house ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21240,7 +21210,7 @@ CMD:asellhouse(playerid, params[])
 	Log("logs/house.log", string);
     HouseInfo[bizid][hStatus] = 0;
     format(HouseInfo[bizid][hOwner], 32, "The State");
-    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[bizid][hOwner], HT(bizid), HouseInfo[bizid][hPrice]);
+    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[bizid][hOwner], HT(bizid), HouseInfo[bizid][hPrice]);
  	UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	return 1;
 }
@@ -21266,8 +21236,8 @@ CMD:hedit(playerid, params[])
 		DestroyDynamicPickup(HouseInfo[idx][hPickup]);
     	HouseInfo[idx][hPickup] = CreateDynamicPickup(1273, 1, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ], 0);
 		DestroyDynamic3DTextLabel(HouseInfo[idx][hText]);
-        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
-		else format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+		else format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		HouseInfo[idx][hText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed house ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21281,7 +21251,7 @@ CMD:hedit(playerid, params[])
 		if(!HouseInfo[idx][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
 		if(strcmp("The State", HouseInfo[bizid][hOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned houses.");
 	    HouseInfo[bizid][hPrice] = input;
-	    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+	    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 		UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set house ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21295,8 +21265,8 @@ CMD:hedit(playerid, params[])
     	//if(!HouseInfo[bizid][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
     	if(input < 1 || input > 11) return SendClientMessage(playerid, COLOR_GREY, "Levels are between 1 and 11.");
 	    HouseInfo[bizid][hLevel] = input;
-        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
-		else format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+		else format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set house ID %d's level to %d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21338,7 +21308,7 @@ CMD:createbiz(playerid, params[])
 		    BizInfo[idx][bLevel] = 1;
 		    BizInfo[idx][bPrice] = 200000;
 			BizInfo[idx][bPickup] = CreateDynamicPickup(1272, 1, X, Y, Z, 0);
-			format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+			format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
 			BizInfo[idx][bText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, X, Y, Z, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created business ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -22748,7 +22718,7 @@ CMD:banaccount(playerid, params[])
 	dini_Set(file, "BannedBy", RPNU(playerid));
 	// BanList
 	new File:ban = fopen("ban.cfg", io_append);
-	format(string, sizeof(string), "%s\r\n", dini_Get(file, "IP"));
+	format(string, sizeof(string), "%s\r~n~", dini_Get(file, "IP"));
 	fwrite(ban, string);
 	fclose(ban);
 	return 1;
@@ -33148,7 +33118,7 @@ stock SpawnChar(playerid)
 	        SetPlayerFacingAngle(playerid, 93.3274);
 	        SetCameraBehindPlayer(playerid);
 	        TogglePlayerSpectating(playerid,0);
-	        
+
 	    }
 	   else
 	    {
@@ -34242,7 +34212,7 @@ public TutFinal(playerid)
 	PlayerInfo[playerid][pModel] = 299;
 	SetPlayerSkin(playerid, 299);
 	PlayerInfo[playerid][pFightStyle] = FIGHT_STYLE_NORMAL;
-	
+
 	return 1;
 }
 
