@@ -1,4 +1,4 @@
-#define SERVER_GM_TEXT "Intense V.2.0"
+#define SERVER_GM_TEXT "Intense V.2.1.5"
 #define SERVER_GM_UPDATER "Blade_Longwei"
 
 /* Gamemode Created by Blade_Longwei
@@ -18930,15 +18930,17 @@ CMD:clearcontract(playerid, params[])
 }
 
 CMD:getpos(playerid, params[]){
+
+    new Float:x,Float:y,Float:z,str[256];
+	new Text:td;
+	td = TextDrawCreate(200,10,Text:str);
 	 if(isDrawn == 0){
 	 	isDrawn = 1;
 	 }else{
 		 isDrawn = 0;
+		 TextDrawDestroy(td);
 	 }
-	new Float:x,Float:y,Float:z,str[256];
-	new Text:td;
 	
-	td = TextDrawCreate(200,10,Text:str);
  	GetPlayerPos(playerid,x,y,z);
 
 	if(isDrawn == 1){
