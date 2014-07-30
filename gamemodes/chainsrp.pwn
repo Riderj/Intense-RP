@@ -1238,7 +1238,7 @@ stock LoadArrestPoint()
 	ap[0] = dini_Float(file, "X");
 	ap[1] = dini_Float(file, "Y");
 	ap[2] = dini_Float(file, "Z");
-	apt = CreateDynamic3DTextLabel("Arrest Point\n{FFFF00}/arrest to arrest a suspect", COLOR_RED, ap[0], ap[1], ap[2], 12);
+	apt = CreateDynamic3DTextLabel("Arrest Point~n~{FFFF00}/arrest to arrest a suspect", COLOR_RED, ap[0], ap[1], ap[2], 12);
 	apt2 = CreatePickup(1314, 1, ap[0], ap[1], ap[2]);
 	print("Arrest Point loaded successfully.");
 	return 1;
@@ -1524,7 +1524,7 @@ stock SaveFamilies()
 	new string[1300];
 	while(idx < MAX_FAMILIES)
 	{
-	    format(string, sizeof(string), "%d|%s|%s|%d|%s|%d|%f|%f|%f|%d|%d|%d|%d|%s|%s|%s|%s|%s|%s|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\r\n",
+	    format(string, sizeof(string), "%d|%s|%s|%d|%s|%d|%f|%f|%f|%d|%d|%d|%d|%s|%s|%s|%s|%s|%s|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\r~n~",
 		FamInfo[idx][fTaken],
 		FamInfo[idx][fName],
 		FamInfo[idx][fMOTD],
@@ -2401,8 +2401,8 @@ stock LoadGarages()
 			if(GarageInfo[idx][gLevel])
 			{
 			    GarageInfo[idx][gPickup] = CreateDynamicPickup(1318, 1, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ], 0);
-                if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
-				else format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+                if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
+				else format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 				GarageInfo[idx][gText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ]+0.3, 15);
 
 			}
@@ -2419,7 +2419,7 @@ stock SaveGarages()
 	new string[256];
 	while(idx < MAX_GARAGES)
 	{
-	    format(string, sizeof(string), "%d|%d|%d|%s|%f|%f|%f\r\n",
+	    format(string, sizeof(string), "%d|%d|%d|%s|%f|%f|%f\r~n~",
 	    GarageInfo[idx][gLevel],
 	    GarageInfo[idx][gPrice],
 	    GarageInfo[idx][gStatus],
@@ -2500,8 +2500,8 @@ stock LoadHouses()
 			if(HouseInfo[idx][hLevel])
 			{
 			    HouseInfo[idx][hPickup] = CreateDynamicPickup(1273, 1, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ], 0);
-                if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
-				else format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+                if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+				else format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 				HouseInfo[idx][hText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ]+0.3, 15);
 
 			}
@@ -2518,7 +2518,7 @@ stock SaveHouses()
 	new string[256];
 	while(idx < MAX_HOUSES)
 	{
-	    format(string, sizeof(string), "%d|%d|%d|%s|%f|%f|%f|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\r\n",
+	    format(string, sizeof(string), "%d|%d|%d|%s|%f|%f|%f|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\r~n~",
 	    HouseInfo[idx][hLevel],
 	    HouseInfo[idx][hPrice],
 	    HouseInfo[idx][hStatus],
@@ -2604,8 +2604,8 @@ stock LoadBiz()
 		    if(BizInfo[idx][bType]) // If Business is owned
 		    {
 		    	BizInfo[idx][bPickup] = CreateDynamicPickup(1272, 1, BizInfo[idx][bX], BizInfo[idx][bY], BizInfo[idx][bZ], 0);
-		    	if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
-				else format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+		    	if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+				else format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 		    	BizInfo[idx][bText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, BizInfo[idx][bX], BizInfo[idx][bY], BizInfo[idx][bZ]+0.3, 15);
 			}
 			idx++;
@@ -2622,7 +2622,7 @@ stock SaveBiz()
 	new string[256];
 	while(idx < MAX_BIZ)
 	{
-	    format(string, sizeof(string), "%d|%d|%s|%f|%f|%f|%d|%d|%d|%d|%d|%d\r\n", BizInfo[idx][bType], BizInfo[idx][bStatus], BizInfo[idx][bOwner], BizInfo[idx][bX], BizInfo[idx][bY], BizInfo[idx][bZ], BizInfo[idx][bMoney], BizInfo[idx][bProducts], BizInfo[idx][bSold], BizInfo[idx][bLevel], BizInfo[idx][bPrice], BizInfo[idx][bAP]);
+	    format(string, sizeof(string), "%d|%d|%s|%f|%f|%f|%d|%d|%d|%d|%d|%d\r~n~", BizInfo[idx][bType], BizInfo[idx][bStatus], BizInfo[idx][bOwner], BizInfo[idx][bX], BizInfo[idx][bY], BizInfo[idx][bZ], BizInfo[idx][bMoney], BizInfo[idx][bProducts], BizInfo[idx][bSold], BizInfo[idx][bLevel], BizInfo[idx][bPrice], BizInfo[idx][bAP]);
 	    if(idx == 1)
 	    {
 	        file = fopen("biz.cfg", io_write);
@@ -2848,7 +2848,7 @@ stock SavegObjects()
 	new string[256];
 	while(idx < MAX_gOBJ)
 	{
-	    format(string, sizeof(string), "	CreateDynamicObject(%d,%f,%f,%f,%f,%f,%f);\r\n",
+	    format(string, sizeof(string), "	CreateDynamicObject(%d,%f,%f,%f,%f,%f,%f);\r~n~",
         ObjgInfo[idx][ogModel],
         ObjgInfo[idx][ogX],
         ObjgInfo[idx][ogY],
@@ -2878,7 +2878,7 @@ stock SaveObjects()
 	new string[256];
 	while(idx < MAX_OBJ)
 	{
-	    format(string, sizeof(string), "	CreateDynamicObject(%d,%f,%f,%f,%f,%f,%f);\r\n",
+	    format(string, sizeof(string), "	CreateDynamicObject(%d,%f,%f,%f,%f,%f,%f);\r~n~",
         ObjInfo[idx][oModel],
         ObjInfo[idx][oX],
         ObjInfo[idx][oY],
@@ -2908,7 +2908,7 @@ stock Savevvveh()
 	new string[256];
 	while(idx < MAX_vvveh)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r~n~",
         vvvehInfo[idx][vvvModel],
         vvvehInfo[idx][vvvX],
         vvvehInfo[idx][vvvY],
@@ -2938,7 +2938,7 @@ stock SaveObjects22g()
 	new string[256];
 	while(idx < MAX_gOBJ)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r~n~",
         ObjgInfo[idx][ogModel],
         ObjgInfo[idx][ogX],
         ObjgInfo[idx][ogY],
@@ -2969,7 +2969,7 @@ stock SaveObjects22()
 	new string[256];
 	while(idx < MAX_OBJ)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f\r~n~",
         ObjInfo[idx][oModel],
         ObjInfo[idx][oX],
         ObjInfo[idx][oY],
@@ -3000,7 +3000,7 @@ stock SaveGates()
 	new string[256];
 	while(idx < MAX_GATES)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%s|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%f|%s|%f\r~n~",
 		GateInfo[idx][gModel],
 		GateInfo[idx][gCX],
 		GateInfo[idx][gCY],
@@ -3088,7 +3088,7 @@ stock LoadDoors()
 			if(DoorInfo[idx][dType]) // If door exists
 			{
                 DoorInfo[idx][dPickup] = CreateDynamicPickup(DoorInfo[idx][dType], 1, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ], DoorInfo[idx][dOVW], DoorInfo[idx][dOInt]);
-				format(string, sizeof(string), "ID: %d\n%s", idx, DoorInfo[idx][dText]);
+				format(string, sizeof(string), "ID: %d~n~%s", idx, DoorInfo[idx][dText]);
 				DoorInfo[idx][dTextID] = CreateDynamic3DTextLabel(string, COLOR_WHITE, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ]+0.3, 15);
 			}
 			idx++;
@@ -3104,7 +3104,7 @@ stock SaveDoors()
 	new string[256];
 	while(idx < MAX_DOORS)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f|%d|%d|%d|%d|%d|%d|%f|%s|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f|%f|%f|%f|%d|%d|%d|%d|%d|%d|%f|%s|%f\r~n~",
   		DoorInfo[idx][dType],
 		DoorInfo[idx][dOX],
 		DoorInfo[idx][dOY],
@@ -3152,7 +3152,7 @@ stock SaveMapIcons()
 	new string[256];
 	while(idx < MAX_MAPICONS)
 	{
-	    format(string, sizeof(string), "%d|%f|%f|%f\r\n",
+	    format(string, sizeof(string), "%d|%f|%f|%f\r~n~",
 		MapIconInfo[idx][mpType],
 		MapIconInfo[idx][mpX],
 		MapIconInfo[idx][mpY],
@@ -3225,7 +3225,7 @@ stock SavePoints()
 	new string[256];
 	while(idx < MAX_POINTS)
 	{
-	    format(string, sizeof(string), "%s|%d|%d|%f|%f|%f|%d\r\n",
+	    format(string, sizeof(string), "%s|%d|%d|%f|%f|%f|%d\r~n~",
 		PointInfo[idx][pName],
 		PointInfo[idx][pTime],
 		PointInfo[idx][pOwner],
@@ -3272,7 +3272,7 @@ stock LoadPoints()
 			    DestroyDynamicPickup(PointInfo[idx][pPickup]);
 			    DestroyDynamic3DTextLabel(PointInfo[idx][pText]);
 			    PointInfo[idx][pProfit] = 0;
-		    	PointInfo[idx][pText] = CreateDynamic3DTextLabel("Point\n/capture", COLOR_WHITE, PointInfo[idx][pX], PointInfo[idx][pY], PointInfo[idx][pZ]+0.3, 15);
+		    	PointInfo[idx][pText] = CreateDynamic3DTextLabel("Point~n~/capture", COLOR_WHITE, PointInfo[idx][pX], PointInfo[idx][pY], PointInfo[idx][pZ]+0.3, 15);
 				format(string, sizeof(string), "The {00FF00}%s {FF6347}is available to be captured.", PointInfo[idx][pName]);
 			    SendClientMessageToAll(COLOR_LIGHTRED, string);
 			}
@@ -3286,9 +3286,9 @@ stock LoadPoints()
 
 main()
 {
-	print("\n----------------------------------");
+	print("~n~----------------------------------");
 	print("    Intense Role-Play   ");
-	print("----------------------------------\n");
+	print("----------------------------------~n~");
 }
 
 
@@ -5794,16 +5794,16 @@ CMD:help(playerid, params[])
 {
    	if(!IsPlayerLoggedIn(playerid)) return SendClientMessage(playerid, COLOR_GREY, "You need to login first before using any command.");
    /*	new BigString15[1024];
-	strcat( BigString15, "\t\t{00C0FF}Commands List:\t\t\n\n");
-	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/stats /inv /reportbug /serverstats /tog /call (/p)ickup (/h)angup /buysim /wtc /search /changepass /tabcheck /fuel\n");
-	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/pay (/un)blindfold (/un)tie /colorcar /paintcar /buy /phonebook /withdraw /deposit /wire /paycheck /id /afkcheck\n");
-	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/points /speedlimit /helpers /joinevent /quitevent /train /stuck\n");
-	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/bid /loyal /walkstyle\n");
-	strcat( BigString15, "{FF6347}CHAT: {FFFFFF}/newbie /o /b /s /l /w /wt /f /r /d /call /sms /report /helpme /accent\n");
-	strcat( BigString15, "{FF6347}INTERACTIONS: {FFFFFF}/me /do /enter /exit /drop /contract /engine /license /showlicense /refer /tow\n");
-	strcat( BigString15, "{FF6347}BUSINESS: {FFFFFF}/buybiz /vault /lock /sellbiztomarket\n" );
-	strcat( BigString15, "{FF6347}HOUSE: {FFFFFF}/buyhouse /hdeposit /hwithdraw /lock /houseupgrade /sellhousetomarket\n");
-	strcat( BigString15, "{FF6347}HELP: {FFFFFF}/animlist /vehhelp /bizhelp /househelp /jobhelp /factionhelp /familyhelp /helperhelp /viphelp /referhelp /cookieshelp\n");
+	strcat( BigString15, "\t\t{00C0FF}Commands List:\t\t~n~~n~");
+	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/stats /inv /reportbug /serverstats /tog /call (/p)ickup (/h)angup /buysim /wtc /search /changepass /tabcheck /fuel~n~");
+	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/pay (/un)blindfold (/un)tie /colorcar /paintcar /buy /phonebook /withdraw /deposit /wire /paycheck /id /afkcheck~n~");
+	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/points /speedlimit /helpers /joinevent /quitevent /train /stuck~n~");
+	strcat( BigString15, "{FF6347}GENERAL: {FFFFFF}/bid /loyal /walkstyle~n~");
+	strcat( BigString15, "{FF6347}CHAT: {FFFFFF}/newbie /o /b /s /l /w /wt /f /r /d /call /sms /report /helpme /accent~n~");
+	strcat( BigString15, "{FF6347}INTERACTIONS: {FFFFFF}/me /do /enter /exit /drop /contract /engine /license /showlicense /refer /tow~n~");
+	strcat( BigString15, "{FF6347}BUSINESS: {FFFFFF}/buybiz /vault /lock /sellbiztomarket~n~" );
+	strcat( BigString15, "{FF6347}HOUSE: {FFFFFF}/buyhouse /hdeposit /hwithdraw /lock /houseupgrade /sellhousetomarket~n~");
+	strcat( BigString15, "{FF6347}HELP: {FFFFFF}/animlist /vehhelp /bizhelp /househelp /jobhelp /factionhelp /familyhelp /helperhelp /viphelp /referhelp /cookieshelp~n~");
 	strcat( BigString15, "{FF6347}HELP: {FFFFFF}/robberyhelp /fishhelp /gatehelp /garagehelp" );
 	ShowPlayerDialog(playerid, 1398, DIALOG_STYLE_MSGBOX, "{00C0FF}Intense Roleplay", BigString15, "OK", "");*/
 	SendClientMessage(playerid, COLOR_GREEN, "_____________________________________________________");
@@ -6928,7 +6928,7 @@ CMD:asellcar(playerid, params[])
 	if(!PlayerInfo[playerb][pVeh] && !PlayerInfo[playerb][pVVeh] && !PlayerInfo[playerb][pVVVeh]) return SendClientMessage(playerid, COLOR_GREY, "This player doesn't own a vehicle.");
 	// Start of Payback
 	new price;
-	// BMX ($600)\nFaggio ($4,000)\nFreeway ($6,000)\nSanchez ($4,000)\nQuad ($6,000)\nPCJ-600 ($20,000)\nFCR-900 ($25,000)
+	// BMX ($600)~n~Faggio ($4,000)~n~Freeway ($6,000)~n~Sanchez ($4,000)~n~Quad ($6,000)~n~PCJ-600 ($20,000)~n~FCR-900 ($25,000)
 	if(GetVehicleModel(carid) == 481) price = 600;
 	else if(GetVehicleModel(carid) == 462) price = 4000;
 	else if(GetVehicleModel(carid) == 463) price = 6000;
@@ -6936,18 +6936,18 @@ CMD:asellcar(playerid, params[])
 	else if(GetVehicleModel(carid) == 471) price = 6000;
 	else if(GetVehicleModel(carid) == 461) price = 20000;
 	else if(GetVehicleModel(carid) == 521) price = 25000; // End of Bikes
-	// Comet ($30,000)\nFeltzer ($26,000)\nStallion ($26,000)\nWindsor ($28,000)\nSentinel ($24,000)\nManana ($22,000)
+	// Comet ($30,000)~n~Feltzer ($26,000)~n~Stallion ($26,000)~n~Windsor ($28,000)~n~Sentinel ($24,000)~n~Manana ($22,000)
 	else if(GetVehicleModel(carid) == 480) price = 30000;
 	else if(GetVehicleModel(carid) == 533) price = 26000;
 	else if(GetVehicleModel(carid) == 439) price = 26000;
 	else if(GetVehicleModel(carid) == 555) price = 28000;
 	else if(GetVehicleModel(carid) == 405) price = 24000;
 	else if(GetVehicleModel(carid) == 410) price = 22000; // End of Normal Vehicles
-	// Huntley ($22,000)\nLandstalker ($24,000)\nSandking ($30,000)
+	// Huntley ($22,000)~n~Landstalker ($24,000)~n~Sandking ($30,000)
 	else if(GetVehicleModel(carid) == 579) price = 22000;
 	else if(GetVehicleModel(carid) == 400) price = 24000;
 	else if(GetVehicleModel(carid) == 495) price = 30000; // End of Off-Road vehicles
-	// Sultan ($60,000)\nBanshee ($65,000)\nBuffalo ($70,000)\nBullet ($90,000)\nCheetah ($80,000)\nJester ($70,000)\nTurismo ($110,000)\nSuper GT(200,000$)\nInfernus($300,000)
+	// Sultan ($60,000)~n~Banshee ($65,000)~n~Buffalo ($70,000)~n~Bullet ($90,000)~n~Cheetah ($80,000)~n~Jester ($70,000)~n~Turismo ($110,000)~n~Super GT(200,000$)~n~Infernus($300,000)
 	else if(GetVehicleModel(carid) == 560) price = 60000;
 	else if(GetVehicleModel(carid) == 429) price = 65000;
 	else if(GetVehicleModel(carid) == 402) price = 70000;
@@ -6957,7 +6957,7 @@ CMD:asellcar(playerid, params[])
 	else if(GetVehicleModel(carid) == 451) price = 110000;
 	else if(GetVehicleModel(carid) == 506) price = 200000;
 	else if(GetVehicleModel(carid) == 411) price = 300000; // End of Sport vehicles
-	// Blade($25,000)\nBroadway ($35,000)\nRemington ($30,000)\nSavanna ($25,000)\nSlamvan ($27,000)\nTornado ($24,000)\nVoodo ($30,000)
+	// Blade($25,000)~n~Broadway ($35,000)~n~Remington ($30,000)~n~Savanna ($25,000)~n~Slamvan ($27,000)~n~Tornado ($24,000)~n~Voodo ($30,000)
 	else if(GetVehicleModel(carid) == 536) price = 25000;
 	else if(GetVehicleModel(carid) == 575) price = 35000;
 	else if(GetVehicleModel(carid) == 534) price = 30000;
@@ -7096,7 +7096,7 @@ CMD:sellcartomarket(playerid, params[])
 	// Start of Payback
 	new price;
 	if(!strcmp(params, "confirm", true))
-	// BMX ($600)\nFaggio ($4,000)\nFreeway ($6,000)\nSanchez ($4,000)\nQuad ($6,000)\nPCJ-600 ($20,000)\nFCR-900 ($25,000)
+	// BMX ($600)~n~Faggio ($4,000)~n~Freeway ($6,000)~n~Sanchez ($4,000)~n~Quad ($6,000)~n~PCJ-600 ($20,000)~n~FCR-900 ($25,000)
 	if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 481) price = 600;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 462) price = 4000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 463) price = 6000;
@@ -7104,18 +7104,18 @@ CMD:sellcartomarket(playerid, params[])
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 471) price = 6000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 461) price = 20000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 521) price = 25000; // End of Bikes
-	// Comet ($30,000)\nFeltzer ($26,000)\nStallion ($26,000)\nWindsor ($28,000)\nSentinel ($24,000)\nManana ($22,000)
+	// Comet ($30,000)~n~Feltzer ($26,000)~n~Stallion ($26,000)~n~Windsor ($28,000)~n~Sentinel ($24,000)~n~Manana ($22,000)
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 480) price = 30000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 533) price = 26000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 439) price = 26000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 555) price = 28000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 405) price = 24000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 410) price = 22000; // End of Normal Vehicles
-	// Huntley ($22,000)\nLandstalker ($24,000)\nSandking ($30,000)
+	// Huntley ($22,000)~n~Landstalker ($24,000)~n~Sandking ($30,000)
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 579) price = 22000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 400) price = 24000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 495) price = 30000; // End of Off-Road vehicles
-	// Sultan ($60,000)\nBanshee ($65,000)\nBuffalo ($70,000)\nBullet ($90,000)\nCheetah ($80,000)\nJester ($70,000)\nTurismo ($110,000)\nSuper GT(200,000$)\nInfernus($300,000)
+	// Sultan ($60,000)~n~Banshee ($65,000)~n~Buffalo ($70,000)~n~Bullet ($90,000)~n~Cheetah ($80,000)~n~Jester ($70,000)~n~Turismo ($110,000)~n~Super GT(200,000$)~n~Infernus($300,000)
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 560) price = 60000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 429) price = 65000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 402) price = 70000;
@@ -7125,7 +7125,7 @@ CMD:sellcartomarket(playerid, params[])
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 451) price = 110000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 506) price = 200000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 411) price = 300000; // End of Sport vehicles
-	// Blade($25,000)\nBroadway ($35,000)\nRemington ($30,000)\nSavanna ($25,000)\nSlamvan ($27,000)\nTornado ($24,000)\nVoodo ($30,000)
+	// Blade($25,000)~n~Broadway ($35,000)~n~Remington ($30,000)~n~Savanna ($25,000)~n~Slamvan ($27,000)~n~Tornado ($24,000)~n~Voodo ($30,000)
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 536) price = 25000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 575) price = 35000;
 	else if(GetVehicleModel(GetPlayerVehicleID(playerid)) == 534) price = 30000;
@@ -8185,7 +8185,7 @@ CMD:suggest(playerid, params[])
 	if(AntiAdv(playerid, params)) return 1;
 	if(strlen(params) > 128) return SendClientMessage(playerid, COLOR_GREY, "Maximum characters limit is 128.");
 	new File: file = fopen("bugs.cfg", io_append), string[128];
-	format(string, sizeof(string), "[%s] %s\r\n", RPN(playerid), params);
+	format(string, sizeof(string), "[%s] %s\r~n~", RPN(playerid), params);
 	fwrite(file, string);
 	fclose(file);
 	SendClientMessage(playerid, COLOR_ORANGE, "Your suggestions has been saved, scripters will check it once possible.");
@@ -8615,14 +8615,14 @@ CMD:hitmanname(playerid, params[])
 		{
 
 		    format(BizInfo[idx][bOwner], 32, "%s", text);
-		    format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+		    format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 			UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 		}
 		if(idx2)
 		{
 		    idx = idx2;
 		    format(HouseInfo[idx][hOwner], 32, "%s", text);
-		    format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+		    format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 			UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 
 		}
@@ -8630,14 +8630,14 @@ CMD:hitmanname(playerid, params[])
 		{
 			idx = idx3;
 		    format(BizInfo[idx][bOwner], 32, "%s", text);
-		    format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+		    format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 			UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 		}
 		if(idx4)
 		{
 		    idx = idx4;
 		    format(HouseInfo[idx][hOwner], 32, "%s", text);
-		    format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+		    format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 			UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 		}
 	}
@@ -10822,7 +10822,7 @@ CMD:buyweed(playerid, params[])
     }
     PlayerInfo[playerid][pWeed] += amount;
 	Weed -= amount;
-	format(string, sizeof(string), "Weed Pickup\n{FFFF00}/buyweed to get weed\nAvailable Stock: %d/2000", Weed);
+	format(string, sizeof(string), "Weed Pickup~n~{FFFF00}/buyweed to get weed~n~Available Stock: %d/2000", Weed);
 	UpdateDynamic3DTextLabelText(WeedText, COLOR_RED, string);
     format(string, sizeof(string), "* %s has bought %d grams of weed for $%d.", RPN(playerid), amount, amount*50);
 	SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -10854,7 +10854,7 @@ CMD:buycocaine(playerid, params[])
     }
     PlayerInfo[playerid][pcocaine] += amount;
 	cocaine -= amount;
-	format(string, sizeof(string), "cocaine Pickup\n{FFFF00}/buycocaine to get cocaine\nAvailable Stock: %d/2000", cocaine);
+	format(string, sizeof(string), "cocaine Pickup~n~{FFFF00}/buycocaine to get cocaine~n~Available Stock: %d/2000", cocaine);
 	UpdateDynamic3DTextLabelText(cocaineText, COLOR_RED, string);
     format(string, sizeof(string), "* %s has bought %d grams of cocaine for $%d.", RPN(playerid), amount, amount*50);
 	SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -10923,7 +10923,7 @@ CMD:dropweed(playerid, params[])
 		FamInfo[idx][fMoney] += packages*40;
 		PointInfo[1][pProfit] += packages*40;
     }
-	format(string, sizeof(string), "Weed Pickup\n{FFFF00}/buyweed to get weed\nAvailable Stock: %d/2000", Weed);
+	format(string, sizeof(string), "Weed Pickup~n~{FFFF00}/buyweed to get weed~n~Available Stock: %d/2000", Weed);
 	UpdateDynamic3DTextLabelText(WeedText, COLOR_RED, string);
     format(string, sizeof(string), "* %s has dropped %d weed packages in the dropoff and collected $%d.", RPN(playerid), packages, packages*40);
 	SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11000,7 +11000,7 @@ CMD:dropcocaine(playerid, params[])
 		FamInfo[idx][fMoney] += packages*40;
 		PointInfo[2][pProfit] += packages*40;
     }
-	format(string, sizeof(string), "cocaine Pickup\n{FFFF00}/buycocaine to get cocaine\nAvailable Stock: %d/2000", cocaine);
+	format(string, sizeof(string), "cocaine Pickup~n~{FFFF00}/buycocaine to get cocaine~n~Available Stock: %d/2000", cocaine);
 	UpdateDynamic3DTextLabelText(cocaineText, COLOR_RED, string);
     format(string, sizeof(string), "* %s has dropped %d cocaine packages in the dropoff and collected $%d.", RPN(playerid), packages, packages*40);
 	SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11160,7 +11160,7 @@ CMD:deliverpackages(playerid, params[])
 	    format(string, sizeof(string), "** Your Trucker level is now %d, you can now carry %d packages. **", newj, newj*5);
 		SendClientMessage(playerid, COLOR_YELLOW, string);
 	}
-	format(string, sizeof(string), "Packages Dropoff\n{FFFF00}/deliverpackages to deliver crates\nAvailable Products: %d/10000", Products);
+	format(string, sizeof(string), "Packages Dropoff~n~{FFFF00}/deliverpackages to deliver crates~n~Available Products: %d/10000", Products);
 	UpdateDynamic3DTextLabelText(ProductsText, COLOR_RED, string);
 	PlayerInfo[playerid][pTPackages] = 0;
 	return 1;
@@ -11321,7 +11321,7 @@ CMD:houseupgrade(playerid, params[])
 		GiveDodMoney(playerid, -price);
 		format(string, sizeof(string), " You have upgraded your house to level %d.", HouseInfo[idx][hLevel]);
 		SendClientMessage(playerid, COLOR_LIGHTBLUE, string);
-		format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+		format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 	}
 	return 1;
@@ -11453,7 +11453,7 @@ CMD:buyproducts(playerid, params[])
     Products -= amount;
     format(string, sizeof(string), "* %s has purchased %d products for $%d.", RPN(playerid), amount, price);
 	SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
-	format(string, sizeof(string), "Packages Dropoff\n{FFFF00}/deliverpackages to deliver crates\nAvailable Products: %d/10000", Products);
+	format(string, sizeof(string), "Packages Dropoff~n~{FFFF00}/deliverpackages to deliver crates~n~Available Products: %d/10000", Products);
 	UpdateDynamic3DTextLabelText(ProductsText, COLOR_RED, string);
 	return 1;
 }
@@ -11628,7 +11628,7 @@ CMD:lock(playerid, params[])
 	        if(!BizInfo[PlayerInfo[playerid][pBiz]][bStatus])
 	        {
 		        BizInfo[PlayerInfo[playerid][pBiz]][bStatus] = 1;
-				format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+				format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 	            UpdateDynamic3DTextLabelText(BizInfo[PlayerInfo[playerid][pBiz]][bText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their business keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11637,7 +11637,7 @@ CMD:lock(playerid, params[])
 			else if(BizInfo[PlayerInfo[playerid][pBiz]][bStatus])
 	        {
 		        BizInfo[PlayerInfo[playerid][pBiz]][bStatus] = 0;
-				format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+				format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 	            UpdateDynamic3DTextLabelText(BizInfo[PlayerInfo[playerid][pBiz]][bText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their business keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11655,7 +11655,7 @@ CMD:lock(playerid, params[])
 	        if(!BizInfo[idx][bStatus])
 	        {
 		        BizInfo[idx][bStatus] = 1;
-				format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+				format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 	            UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their business keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11664,7 +11664,7 @@ CMD:lock(playerid, params[])
 			else if(BizInfo[idx][bStatus])
 	        {
 		        BizInfo[idx][bStatus] = 0;
-                format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+                format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 	            UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their business keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11682,7 +11682,7 @@ CMD:lock(playerid, params[])
 	        if(!HouseInfo[PlayerInfo[playerid][pHouse]][hStatus])
 	        {
 		        HouseInfo[PlayerInfo[playerid][pHouse]][hStatus] = 1;
-				format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+				format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 	            UpdateDynamic3DTextLabelText(HouseInfo[PlayerInfo[playerid][pHouse]][hText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their house keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11691,7 +11691,7 @@ CMD:lock(playerid, params[])
 			else if(HouseInfo[PlayerInfo[playerid][pHouse]][hStatus])
 	        {
 		        HouseInfo[PlayerInfo[playerid][pHouse]][hStatus] = 0;
-				format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+				format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 	            UpdateDynamic3DTextLabelText(HouseInfo[PlayerInfo[playerid][pHouse]][hText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their house keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11709,7 +11709,7 @@ CMD:lock(playerid, params[])
 	        if(!HouseInfo[PlayerInfo[playerid][pVHouse]][hStatus])
 	        {
 		        HouseInfo[PlayerInfo[playerid][pVHouse]][hStatus] = 1;
-				format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+				format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 	            UpdateDynamic3DTextLabelText(HouseInfo[PlayerInfo[playerid][pVHouse]][hText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their house keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11718,7 +11718,7 @@ CMD:lock(playerid, params[])
 			else if(HouseInfo[PlayerInfo[playerid][pVHouse]][hStatus])
 	        {
 		        HouseInfo[PlayerInfo[playerid][pVHouse]][hStatus] = 0;
-				format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+				format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 	            UpdateDynamic3DTextLabelText(HouseInfo[PlayerInfo[playerid][pVHouse]][hText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their house keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11736,7 +11736,7 @@ CMD:lock(playerid, params[])
 	        if(!GarageInfo[PlayerInfo[playerid][pGarage]][gStatus])
 	        {
 		        GarageInfo[PlayerInfo[playerid][pGarage]][gStatus] = 1;
-				format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+				format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 	            UpdateDynamic3DTextLabelText(GarageInfo[PlayerInfo[playerid][pGarage]][gText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their garage keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11745,7 +11745,7 @@ CMD:lock(playerid, params[])
 			else if(GarageInfo[PlayerInfo[playerid][pGarage]][gStatus])
 	        {
 		        GarageInfo[PlayerInfo[playerid][pGarage]][gStatus] = 0;
-		        format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+		        format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 	            UpdateDynamic3DTextLabelText(GarageInfo[PlayerInfo[playerid][pGarage]][gText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their garage keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11763,7 +11763,7 @@ CMD:lock(playerid, params[])
 	        if(!GarageInfo[PlayerInfo[playerid][pVGarage]][gStatus])
 	        {
 		        GarageInfo[PlayerInfo[playerid][pVGarage]][gStatus] = 1;
-		        format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+		        format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 	            UpdateDynamic3DTextLabelText(GarageInfo[PlayerInfo[playerid][pVGarage]][gText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their garage keys and unlocks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11772,7 +11772,7 @@ CMD:lock(playerid, params[])
 			else if(GarageInfo[PlayerInfo[playerid][pVGarage]][gStatus])
 	        {
 		        GarageInfo[PlayerInfo[playerid][pVGarage]][gStatus] = 0;
-				format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+				format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 	            UpdateDynamic3DTextLabelText(GarageInfo[PlayerInfo[playerid][pVGarage]][gText], COLOR_WHITE, string);
 		        format(string, sizeof(string), "* %s takes out their garage keys and locks it.", RPN(playerid));
 				SendNearbyMessage(playerid, 15, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
@@ -11862,7 +11862,7 @@ CMD:buygarage(playerid, params[])
 				if(PlayerInfo[playerid][pGarage]) PlayerInfo[playerid][pVGarage] = idx;
 				else PlayerInfo[playerid][pGarage] = idx;
 			    format(GarageInfo[idx][gOwner], 32, "%s", RPNU(playerid));
-			    format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+			    format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 				UpdateDynamic3DTextLabelText(GarageInfo[idx][gText], COLOR_WHITE, string);
 				SendClientMessage(playerid, COLOR_GREEN, " You have successfully bought a garage.");
 				SendClientMessage(playerid, COLOR_WHITE, " Type /garagehelp to view your garage commands.");
@@ -11897,7 +11897,7 @@ CMD:sellgaragetomarket(playerid, params[])
 	    {
 	        GiveDodMoney(playerid, (75*GarageInfo[PlayerInfo[playerid][pGarage]][gPrice])/100);
 			GarageInfo[PlayerInfo[playerid][pGarage]][gStatus] = 0;
-		    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
+		    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
 		    UpdateDynamic3DTextLabelText(GarageInfo[PlayerInfo[playerid][pGarage]][gText], COLOR_WHITE, string);
 		    PlayerInfo[playerid][pGarage] = 0;
 		    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your garage to The State. (75 percent of the original price was paid back)");
@@ -11913,7 +11913,7 @@ CMD:sellgaragetomarket(playerid, params[])
 		        GiveDodMoney(playerid, (75*GarageInfo[idx][gPrice])/100);
 				GarageInfo[idx][gStatus] = 0;
 			    format(GarageInfo[idx][gOwner], 32, "The State");
-			    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
+			    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
 			    UpdateDynamic3DTextLabelText(GarageInfo[idx][gText], COLOR_WHITE, string);
 			    PlayerInfo[playerid][pVGarage] = 0;
 			    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your garage to The State. (75 percent of the original price was paid back)");
@@ -11948,7 +11948,7 @@ CMD:buyhouse(playerid, params[])
 				if(PlayerInfo[playerid][pHouse]) PlayerInfo[playerid][pVHouse] = idx;
 				else PlayerInfo[playerid][pHouse] = idx;
 			    format(HouseInfo[idx][hOwner], 32, "%s", RPNU(playerid));
-			    format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+			    format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 				UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 				SendClientMessage(playerid, COLOR_GREEN, " You have successfully bought a house.");
 				SendClientMessage(playerid, COLOR_WHITE, " Type /househelp to view your house commands.");
@@ -11984,7 +11984,7 @@ CMD:sellhousetomarket(playerid, params[])
 	        GiveDodMoney(playerid, (75*HouseInfo[PlayerInfo[playerid][pHouse]][hPrice])/100);
 			HouseInfo[PlayerInfo[playerid][pHouse]][hStatus] = 0;
 		    format(HouseInfo[PlayerInfo[playerid][pHouse]][hOwner], 32, "The State");
-		    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+		    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 		    UpdateDynamic3DTextLabelText(HouseInfo[PlayerInfo[playerid][pHouse]][hText], COLOR_WHITE, string);
 		    PlayerInfo[playerid][pHouse] = 0;
 		    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your house to The State. (75 percent of the original price was paid back)");
@@ -12000,7 +12000,7 @@ CMD:sellhousetomarket(playerid, params[])
 		        GiveDodMoney(playerid, (75*HouseInfo[idx][hPrice])/100);
 				HouseInfo[idx][hStatus] = 0;
 			    format(HouseInfo[idx][hOwner], 32, "The State");
-			    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+			    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 			    UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 			    PlayerInfo[playerid][pVHouse] = 0;
 			    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your house to The State. (75 percent of the original price was paid back)");
@@ -12035,7 +12035,7 @@ CMD:buybiz(playerid, params[])
 				if(PlayerInfo[playerid][pBiz]) PlayerInfo[playerid][pVBiz] = idx;
 				else PlayerInfo[playerid][pBiz] = idx;
 			    format(BizInfo[idx][bOwner], 32, "%s", RPNU(playerid));
-			    format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+			    format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 				UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 				SendClientMessage(playerid, COLOR_GREEN, " You have successfully bought a business.");
 				SendClientMessage(playerid, COLOR_WHITE, " Type /bizhelp to view your business commands.");
@@ -12074,7 +12074,7 @@ CMD:sellbiztomarket(playerid, params[])
 	        GiveDodMoney(playerid, (75*BizInfo[PlayerInfo[playerid][pBiz]][bPrice])/100);
 			BizInfo[PlayerInfo[playerid][pBiz]][bStatus] = 0;
 		    format(BizInfo[PlayerInfo[playerid][pBiz]][bOwner], 32, "The State");
-		    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+		    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
 		    UpdateDynamic3DTextLabelText(BizInfo[PlayerInfo[playerid][pBiz]][bText], COLOR_WHITE, string);
 		    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your business to The State. (75 percent of original price was paid back)");
             format(string, sizeof(string), "%s has sold business id %d to the market.", RPN(playerid), PlayerInfo[playerid][pBiz]);
@@ -12090,7 +12090,7 @@ CMD:sellbiztomarket(playerid, params[])
 		        GiveDodMoney(playerid, (75*BizInfo[idx][bPrice])/100);
 				BizInfo[idx][bStatus] = 0;
 			    format(BizInfo[idx][bOwner], 32, "The State");
-			    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+			    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
 			    UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 			    SendClientMessage(playerid, COLOR_GREEN, " You have successfully sold your business to The State. (75 percent of original price was paid back)");
 	            format(string, sizeof(string), "%s has sold business id %d to the market.", RPN(playerid), idx);
@@ -14416,7 +14416,7 @@ CMD:phchange(playerid, params[])
 	}
 	fclose(file);
 	file = fopen("cellphones.cfg", io_append);
-	format(string, sizeof(string), "%d\r\n", number);
+	format(string, sizeof(string), "%d\r~n~", number);
 	fwrite(file, string);
 	fclose(file);
 	if(!PlayerInfo[playerid][pNumber])
@@ -14904,7 +14904,7 @@ CMD:buyviptoys(playerid, params[])
     if(!IsPlayerInRangeOfPoint(playerid, 2, 1817.5709,-1317.3975,131.9368)) return SendClientMessage(playerid, COLOR_GREY, "You are not near the VIP Toys shop.");
 	if(sscanf(params, "ii", option, index))
 	{
-		ShowPlayerDialog(playerid, 9182, DIALOG_STYLE_MSGBOX, "[Usage]: /buyviptoys [model] [slot (0-9)]", "Hair (1-5) | Headphones (12-15) | Guitar (16)\nTopHat (17) | Motorcycle Helmets (18-22) | Smoke Puff (23) \n\nBronze VIP: Slots 0~3 (4 Slots)\nSilver VIP: Slots 0~5 (6 Slots)\nGold VIP: Slots 0~7 (8 Slots)\nPlatinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
+		ShowPlayerDialog(playerid, 9182, DIALOG_STYLE_MSGBOX, "[Usage]: /buyviptoys [model] [slot (0-9)]", "Hair (1-5) | Headphones (12-15) | Guitar (16)~n~TopHat (17) | Motorcycle Helmets (18-22) | Smoke Puff (23) ~n~~n~Bronze VIP: Slots 0~3 (4 Slots)~n~Silver VIP: Slots 0~5 (6 Slots)~n~Gold VIP: Slots 0~7 (8 Slots)~n~Platinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
 	    return 1;
 	}
 	if(option < 1 || option > 85) return SendClientMessage(playerid, COLOR_GREY, "Toys are between 1 and 75.");
@@ -14937,7 +14937,7 @@ CMD:buypolicetoys(playerid, params[])
     if(!IsPlayerInRangeOfPoint(playerid, 2.2,253.2935,76.9233,1003.6406)) return SendClientMessage(playerid, COLOR_GREY, "You are not near the Police Accessories shop.");
 	if(sscanf(params, "ii", option, index))
 	{
-		ShowPlayerDialog(playerid, 9183, DIALOG_STYLE_MSGBOX, "[Usage]: /buypolicetoys [model] [slot (0-9)]", "Police Vest(1) | SWAT Helmet(2) | Police Shield(3) | Tazer (4) | Police Radio (5)\n\nBronze VIP: Slots 0~3 (4 Slots)\nSilver VIP: Slots 0~5 (6 Slots)\nGold VIP: Slots 0~7 (8 Slots)\nPlatinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
+		ShowPlayerDialog(playerid, 9183, DIALOG_STYLE_MSGBOX, "[Usage]: /buypolicetoys [model] [slot (0-9)]", "Police Vest(1) | SWAT Helmet(2) | Police Shield(3) | Tazer (4) | Police Radio (5)~n~~n~Bronze VIP: Slots 0~3 (4 Slots)~n~Silver VIP: Slots 0~5 (6 Slots)~n~Gold VIP: Slots 0~7 (8 Slots)~n~Platinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
 	    return 1;
 	}
 	if(option < 1 || option > 5) return SendClientMessage(playerid, COLOR_GREY, "Toys are between 1 and 75.");
@@ -14962,7 +14962,7 @@ CMD:buytoys(playerid, params[])
 	if(idx > 0 && idx < MAX_BIZ && BizInfo[idx][bType] != 2 || idx < 1 || idx > MAX_BIZ) return SendClientMessage(playerid, COLOR_GREY, "You are not inside a Clothes Shop.");
 	if(sscanf(params, "ii", option, index))
 	{
-		ShowPlayerDialog(playerid, 9182, DIALOG_STYLE_MSGBOX, "[Usage]: /buytoys [model] [slot (0-9)]", "Glasses (1-30) | Watches (31-45) | Bandanas (46-65) | Hats (66-75)\nMasks (76-85)\n Police Vest (86)\n\nRegular Players: Slots 0~1 (2 Slots)\nBronze VIP: Slots 0~3 (4 Slots)\nSilver VIP: Slots 0~5 (6 Slots)\nGold VIP: Slots 0~7 (8 Slots)\nPlatinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
+		ShowPlayerDialog(playerid, 9182, DIALOG_STYLE_MSGBOX, "[Usage]: /buytoys [model] [slot (0-9)]", "Glasses (1-30) | Watches (31-45) | Bandanas (46-65) | Hats (66-75)~n~Masks (76-85)~n~ Police Vest (86)~n~~n~Regular Players: Slots 0~1 (2 Slots)~n~Bronze VIP: Slots 0~3 (4 Slots)~n~Silver VIP: Slots 0~5 (6 Slots)~n~Gold VIP: Slots 0~7 (8 Slots)~n~Platinum VIP: Slots 0~9 (10 Slots)", "Close", "Close");
 	    return 1;
 	}
 	if(BizInfo[idx][bProducts] < 1) return SendClientMessage(playerid, COLOR_GREY, "This business is currently out of products.");
@@ -17791,7 +17791,7 @@ CMD:editdrugs(playerid, params[])
 	if(!strcmp(option, "weed", true, 4))
 	{
 	    Weed = amount;
-		format(string, sizeof(string), "Weed Pickup\n{FFFF00}/buyweed to get weed\nAvailable Stock: %d/2000", Weed);
+		format(string, sizeof(string), "Weed Pickup~n~{FFFF00}/buyweed to get weed~n~Available Stock: %d/2000", Weed);
 		UpdateDynamic3DTextLabelText(WeedText, COLOR_RED, string);
 		format(string, sizeof(string), "AdmWarn: %s has set the Drugs House's stock to %d grams.", RPN(playerid), amount);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -17800,7 +17800,7 @@ CMD:editdrugs(playerid, params[])
 	else if(!strcmp(option, "cocaine", true, 5))
 	{
 	    cocaine = amount;
-		format(string, sizeof(string), "cocaine Pickup\n{FFFF00}/buycocaine to get cocaine\nAvailable Stock: %d/2000", cocaine);
+		format(string, sizeof(string), "cocaine Pickup~n~{FFFF00}/buycocaine to get cocaine~n~Available Stock: %d/2000", cocaine);
 		UpdateDynamic3DTextLabelText(cocaineText, COLOR_RED, string);
 		format(string, sizeof(string), "AdmWarn: %s has set the cocaine Lab's stock to %d grams.", RPN(playerid), amount);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -18273,7 +18273,7 @@ CMD:aod(playerid, params[])
 	if(PlayerInfo[playerid][pAdmin] < 1) return SendClientMessage(playerid, COLOR_GREY, "You are not authorized to use this command.");
 	if(!aDuty[playerid])
 	{
-        format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {FF17CC}ON DUTY.", RPN(playerid));
+        format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {009933}ON DUTY.", RPN(playerid));
 		SendAdminMessage(COLOR_DARKRED, 1, string);
 		aDuty[playerid] = 1;
 	    format(string, sizeof(string), "%s", RPALN(playerid));
@@ -18296,8 +18296,6 @@ CMD:aod(playerid, params[])
 	    format(string, sizeof(string), "{FFFFFF}[{FF0000}AdmWarn{FFFFFF}]: %s is {FF0000}OFF DUTY.", RPN(playerid));
 	    SendAdminMessage(COLOR_DARKRED, 1, string);
 		DestroyDynamic3DTextLabel(aDutyText[playerid]);
-		new oldskinsss;
-		oldskinsss = PlayerInfo[playerid][pModel];
 	}
 	return 1;
 }
@@ -18321,8 +18319,6 @@ CMD:mod(playerid, params[])
 	    if(PlayerInfo[playerid][pMapper] == 5) aDutyText[playerid] = CreateDynamic3DTextLabel(string, COLOR_RED, 0, 0, -20, 25, playerid);
         Streamer_SetFloatData(STREAMER_TYPE_3D_TEXT_LABEL, aDutyText[playerid] , E_STREAMER_ATTACH_OFFSET_Z, 0.25);
         PlayerInfo[playerid][pModel] = GetPlayerSkin(playerid);
-        GiveDodWeapon(playerid, 37, 11999);
-        SetPlayerSkin(playerid, 240);
 	}
 	else
 	{
@@ -18330,11 +18326,6 @@ CMD:mod(playerid, params[])
         format(string, sizeof(string), "MapperWarn: %s has went off mapper duty.", RPN(playerid));
 		SendMapperMessage(COLOR_GREEN, 1, string);
 		DestroyDynamic3DTextLabel(aDutyText[playerid]);
-		new oldskinsss;
-		oldskinsss = PlayerInfo[playerid][pModel];
-		SetPlayerSkin(playerid, oldskinsss);
-		ResetPlayerWeapons(playerid);
-	    ResetDodWeapons(playerid);
 	}
 	return 1;
 }
@@ -18919,6 +18910,8 @@ CMD:clearwanted(playerid, params[])
 	return 1;
 }
 
+new isDrawn = 0;
+
 CMD:clearcontract(playerid, params[])
 {
 	new playerb, string[128];
@@ -18933,6 +18926,27 @@ CMD:clearcontract(playerid, params[])
 	format(string, sizeof(string), "AdmWarn: %s has cleared the contract on %s's head.", RPN(playerid), RPN(playerb));
 	SendHitmanMessage(COLOR_YELLOW, string);
 	SendAdminMessage(COLOR_DARKRED, 1, string);
+	return 1;
+}
+
+CMD:getpos(playerid, params[]){
+	 if(isDrawn == 0){
+	 	isDrawn = 1;
+	 }else{
+		 isDrawn = 0;
+	 }
+	new Float:x,Float:y,Float:z,str[256];
+	new Text:td;
+	
+	td = TextDrawCreate(200,10,Text:str);
+ 	GetPlayerPos(playerid,x,y,z);
+
+	if(isDrawn == 1){
+		format(str, sizeof(str), "X: %d~n~Y: %d~n~Z:%d", x,y,z);
+		TextDrawColor(td,0xff0000ff);
+		TextDrawSetString(td,str);
+		TextDrawShowForPlayer(playerid,Text:td);
+	}
 	return 1;
 }
 
@@ -19024,7 +19038,7 @@ CMD:setstat(playerid, params[])
 				}
 				fclose(file);
 				file = fopen("cellphones.cfg", io_append);
-				format(string, sizeof(string), "%d\r\n", amount);
+				format(string, sizeof(string), "%d\r~n~", amount);
 				fwrite(file, string);
 				fclose(file);
 			}
@@ -19382,28 +19396,28 @@ CMD:setname(playerid, params[])
 	if(idx)
 	{
 		format(BizInfo[idx][bOwner], 32, "%s", text);
-  		format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+  		format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 		UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 	}
 	if(idx2)
 	{
  		idx = idx2;
 		format(HouseInfo[idx][hOwner], 32, "%s", text);
-  		format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+  		format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 	}
 	if(idx3)
 	{
 		idx = idx3;
   		format(BizInfo[idx][bOwner], 32, "%s", text);
-    	format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+    	format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
 		UpdateDynamic3DTextLabelText(BizInfo[idx][bText], COLOR_WHITE, string);
 	}
 	if(idx4)
 	{
  		idx = idx4;
    		format(HouseInfo[idx][hOwner], 32, "%s", text);
-    	format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+    	format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		UpdateDynamic3DTextLabelText(HouseInfo[idx][hText], COLOR_WHITE, string);
 	}
 	return 1;
@@ -19454,7 +19468,7 @@ CMD:arrestpoint(playerid, params[])
 	GetPlayerPos(playerid, ap[0], ap[1], ap[2]);
 	DestroyDynamic3DTextLabel(apt);
 	DestroyPickup(apt2);
-	apt = CreateDynamic3DTextLabel("Arrest Point\n{FFFF00}/arrest to arrest a suspect", COLOR_RED, ap[0], ap[1], ap[2], 12);
+	apt = CreateDynamic3DTextLabel("Arrest Point~n~{FFFF00}/arrest to arrest a suspect", COLOR_RED, ap[0], ap[1], ap[2], 12);
 	apt2 = CreatePickup(1314, 1, ap[0], ap[1], ap[2]);
 	SendClientMessage(playerid, COLOR_WHITE, " You have changed the NYPD's arrest point.");
 	return 1;
@@ -20387,7 +20401,7 @@ CMD:dedit(playerid, params[])
 	    if(AntiAdv(playerid, params)) return 1;
         if(DoorInfo[idx][dType] == 0) return SendClientMessage(playerid, COLOR_GREY, "Invalid door id.");
 		format(DoorInfo[idx][dText], 128, "%s", text);
-		format(string, sizeof(string), "ID: %d\n%s", idx, DoorInfo[idx][dText]);
+		format(string, sizeof(string), "ID: %d~n~%s", idx, DoorInfo[idx][dText]);
 		UpdateDynamic3DTextLabelText(DoorInfo[idx][dTextID], COLOR_WHITE, string);
 	    format(string, sizeof(string), " You have set door ID %d's text to %s", idx, text);
 	    SendClientMessage(playerid, COLOR_WHITE, string);
@@ -20414,7 +20428,7 @@ CMD:dedit(playerid, params[])
 		DestroyDynamicPickup(DoorInfo[idx][dPickup]);
 		DoorInfo[idx][dPickup] = CreateDynamicPickup(DoorInfo[idx][dType], 1, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ], DoorInfo[idx][dOVW], DoorInfo[idx][dOInt]);
 		DestroyDynamic3DTextLabel(DoorInfo[idx][dTextID]);
-		format(string, sizeof(string), "ID: %d\n%s", idx, DoorInfo[idx][dText]);
+		format(string, sizeof(string), "ID: %d~n~%s", idx, DoorInfo[idx][dText]);
 		DoorInfo[idx][dTextID] = CreateDynamic3DTextLabel(string, COLOR_WHITE, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ]+0.3, 15);
 	    format(string, sizeof(string), " You have set door ID %d's exterior to your coordinates. (Int: %d | VW: %d)", idx, GetPlayerInterior(playerid), GetPlayerVirtualWorld(playerid));
 	    SendClientMessage(playerid, COLOR_WHITE, string);
@@ -20519,7 +20533,7 @@ CMD:createdoor(playerid, params[])
 			GetPlayerFacingAngle(playerid, DoorInfo[idx][dOA]);
 			// Creating the door
             DoorInfo[idx][dPickup] = CreateDynamicPickup(DoorInfo[idx][dType], 1, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ], DoorInfo[idx][dOVW], DoorInfo[idx][dOInt]);
-			format(string, sizeof(string), "ID: %d\n/dedit to set the text", idx);
+			format(string, sizeof(string), "ID: %d~n~/dedit to set the text", idx);
 			DoorInfo[idx][dTextID] = CreateDynamic3DTextLabel(string, COLOR_WHITE, DoorInfo[idx][dOX], DoorInfo[idx][dOY], DoorInfo[idx][dOZ]+0.3, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created door ID %d. (Int: %d | VW: %d)", RPN(playerid), idx, DoorInfo[idx][dOInt], DoorInfo[idx][dOVW]);
 		    SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20648,8 +20662,8 @@ CMD:bedit(playerid, params[])
 		DestroyDynamicPickup(BizInfo[bizid][bPickup]);
     	BizInfo[bizid][bPickup] = CreateDynamicPickup(1272, 1, BizInfo[bizid][bX], BizInfo[bizid][bY], BizInfo[bizid][bZ], 0);
 		DestroyDynamic3DTextLabel(BizInfo[bizid][bText]);
-        if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
-		else format(string, sizeof(string), "Business of %s\nBusiness type: %s\n%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
+        if(!strcmp("The State", BizInfo[idx][bOwner])) format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+		else format(string, sizeof(string), "Business of %s~n~Business type: %s~n~%s", BizInfo[idx][bOwner], RBT(idx), RBS(idx));
     	BizInfo[bizid][bText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, BizInfo[bizid][bX], BizInfo[bizid][bY], BizInfo[bizid][bZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed business ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20661,7 +20675,7 @@ CMD:bedit(playerid, params[])
 		if(!BizInfo[bizid][bType]) return SendClientMessage(playerid, COLOR_GREY, "Invalid business id.");
 		if(strcmp("The State", BizInfo[bizid][bOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned businesses.");
 	    BizInfo[bizid][bPrice] = input;
-	    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[bizid][bOwner], RBT(bizid), input);
+	    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[bizid][bOwner], RBT(bizid), input);
 	    UpdateDynamic3DTextLabelText(BizInfo[bizid][bText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set business ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20763,7 +20777,7 @@ CMD:asellbiz(playerid, params[])
 	Log("logs/business.log", string);
     BizInfo[bizid][bStatus] = 0;
     format(BizInfo[bizid][bOwner], 32, "The State");
-    format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[bizid][bOwner], RBT(bizid), BizInfo[bizid][bPrice]);
+    format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[bizid][bOwner], RBT(bizid), BizInfo[bizid][bPrice]);
  	UpdateDynamic3DTextLabelText(BizInfo[bizid][bText], COLOR_WHITE, string);
 	return 1;
 }
@@ -20790,7 +20804,7 @@ CMD:creategarage(playerid, params[])
 		    GarageInfo[idx][gY] = Y;
 		    GarageInfo[idx][gZ] = Z;
 		    GarageInfo[idx][gPickup] = CreateDynamicPickup(1318, 1, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ], 0);
-            format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
+            format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
 			GarageInfo[idx][gText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ]+0.3, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created garage ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20897,7 +20911,7 @@ CMD:asellgarage(playerid, params[])
 	SendAdminMessage(COLOR_DARKRED, 1, string);
 	Log("logs/garage.log", string);
     GarageInfo[bizid][gStatus] = 0;
-    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(bizid), GarageInfo[bizid][gPrice]);
+    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(bizid), GarageInfo[bizid][gPrice]);
  	UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	return 1;
 }
@@ -20923,8 +20937,8 @@ CMD:garageedit(playerid, params[])
 		DestroyDynamicPickup(GarageInfo[idx][gPickup]);
     	GarageInfo[idx][gPickup] = CreateDynamicPickup(1318, 1, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ], 0);
 		DestroyDynamic3DTextLabel(GarageInfo[idx][gText]);
-        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
-		else format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
+		else format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 		GarageInfo[idx][gText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, GarageInfo[idx][gX], GarageInfo[idx][gY], GarageInfo[idx][gZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed garage ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20938,7 +20952,7 @@ CMD:garageedit(playerid, params[])
 		if(!GarageInfo[idx][gLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid garage id.");
 		if(strcmp("The State", GarageInfo[bizid][gOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned garages.");
 	    GarageInfo[bizid][gPrice] = input;
-	    format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(bizid), input);
+	    format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(bizid), input);
 		UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set garage ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -20952,8 +20966,8 @@ CMD:garageedit(playerid, params[])
     	//if(!GarageInfo[bizid][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
     	if(input < 1 || input > 10) return SendClientMessage(playerid, COLOR_GREY, "Levels are between 1 and 10.");
 	    GarageInfo[bizid][gLevel] = input;
-        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s\nStatus: For Sale\nPrice: $%d", GT(idx), GarageInfo[idx][gPrice]);
-		else format(string, sizeof(string), "{F81414}Garage of %s\nGarage Size: %s\n%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
+        if(!strcmp("The State", GarageInfo[idx][gOwner])) format(string, sizeof(string), "Garage Size: %s~n~Status: For Sale~n~Price: $%d", GT(idx), GarageInfo[idx][gPrice]);
+		else format(string, sizeof(string), "{F81414}Garage of %s~n~Garage Size: %s~n~%s", GarageInfo[idx][gOwner], GT(idx), GTT(idx));
 		UpdateDynamic3DTextLabelText(GarageInfo[bizid][gText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set garage ID %d's level to %d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21072,7 +21086,7 @@ CMD:createhouse(playerid, params[])
 			HouseInfo[idx][hGun][4] = 0;
 			HouseInfo[idx][hGunAmmo][4] = 0;
 		    HouseInfo[idx][hPickup] = CreateDynamicPickup(1273, 1, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ], 0);
-            format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+            format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 			HouseInfo[idx][hText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ]+0.3, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created house ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21194,7 +21208,7 @@ CMD:asellhouse(playerid, params[])
 	Log("logs/house.log", string);
     HouseInfo[bizid][hStatus] = 0;
     format(HouseInfo[bizid][hOwner], 32, "The State");
-    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[bizid][hOwner], HT(bizid), HouseInfo[bizid][hPrice]);
+    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[bizid][hOwner], HT(bizid), HouseInfo[bizid][hPrice]);
  	UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	return 1;
 }
@@ -21220,8 +21234,8 @@ CMD:hedit(playerid, params[])
 		DestroyDynamicPickup(HouseInfo[idx][hPickup]);
     	HouseInfo[idx][hPickup] = CreateDynamicPickup(1273, 1, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ], 0);
 		DestroyDynamic3DTextLabel(HouseInfo[idx][hText]);
-        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
-		else format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+		else format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		HouseInfo[idx][hText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[idx][hX], HouseInfo[idx][hY], HouseInfo[idx][hZ]+0.3, 15);
 	    format(string, sizeof(string), "AdmWarn: %s has changed house ID %d's location.", RPN(playerid), bizid);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21235,7 +21249,7 @@ CMD:hedit(playerid, params[])
 		if(!HouseInfo[idx][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
 		if(strcmp("The State", HouseInfo[bizid][hOwner])) return SendClientMessage(playerid, COLOR_GREY, "You can't edit the price of owned houses.");
 	    HouseInfo[bizid][hPrice] = input;
-	    format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+	    format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
 		UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set house ID %d's price to $%d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21249,8 +21263,8 @@ CMD:hedit(playerid, params[])
     	//if(!HouseInfo[bizid][hLevel]) return SendClientMessage(playerid, COLOR_GREY, "Invalid house id.");
     	if(input < 1 || input > 11) return SendClientMessage(playerid, COLOR_GREY, "Levels are between 1 and 11.");
 	    HouseInfo[bizid][hLevel] = input;
-        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s\nHouse Type: %s\nFor Sale\nPrice: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
-		else format(string, sizeof(string), "{00C0FF}House of %s\nHouse Type: %s\nStatus: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
+        if(!strcmp("The State", HouseInfo[idx][hOwner])) format(string, sizeof(string), "Owner: %s~n~House Type: %s~n~For Sale~n~Price: $%d", HouseInfo[idx][hOwner], HT(idx), HouseInfo[idx][hPrice]);
+		else format(string, sizeof(string), "{00C0FF}House of %s~n~House Type: %s~n~Status: %s", HouseInfo[idx][hOwner], HT(idx), RHS(idx));
 		UpdateDynamic3DTextLabelText(HouseInfo[bizid][hText], COLOR_WHITE, string);
 	    format(string, sizeof(string), "AdmWarn: %s has set house ID %d's level to %d.", RPN(playerid), bizid, input);
 		SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -21292,7 +21306,7 @@ CMD:createbiz(playerid, params[])
 		    BizInfo[idx][bLevel] = 1;
 		    BizInfo[idx][bPrice] = 200000;
 			BizInfo[idx][bPickup] = CreateDynamicPickup(1272, 1, X, Y, Z, 0);
-			format(string, sizeof(string), "Owner: %s\nBusiness Type: %s\nStatus: For Sale\nPrice: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
+			format(string, sizeof(string), "Owner: %s~n~Business Type: %s~n~Status: For Sale~n~Price: $%d", BizInfo[idx][bOwner], RBT(idx), BizInfo[idx][bPrice]);
 			BizInfo[idx][bText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, X, Y, Z, 15);
 			format(string, sizeof(string), "AdmWarn: %s has created business ID %d.", RPN(playerid), idx);
 			SendAdminMessage(COLOR_DARKRED, 1, string);
@@ -22702,7 +22716,7 @@ CMD:banaccount(playerid, params[])
 	dini_Set(file, "BannedBy", RPNU(playerid));
 	// BanList
 	new File:ban = fopen("ban.cfg", io_append);
-	format(string, sizeof(string), "%s\r\n", dini_Get(file, "IP"));
+	format(string, sizeof(string), "%s\r~n~", dini_Get(file, "IP"));
 	fwrite(ban, string);
 	fclose(ban);
 	return 1;
@@ -23710,50 +23724,123 @@ public OnPlayerEnterCheckpoint(playerid)
 			}
 		}
 	}
-    if(CP[playerid] == 1) // Drivers License Test
-	{
-		if(IsPlayerInRangeOfPoint(playerid,5,962.3975,-1433.5745,14.0537)) // Checkpoint 1
+
+		if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 1) // Checkpoint 1
 		{
 		    SetPlayerCheckpoint(playerid,1009.3680,-1407.4510,13.0299,5);
+		    CP[playerid] = 2;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1009.3680,-1407.4510,13.0299)) // Checkpoint 2
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 2) // Checkpoint 2
 		{
-		    SetPlayerCheckpoint(playerid,1249.1490,-803.8987,84.0402,5);
+		    DisablePlayerCheckpoint(playerid);
+		    SetPlayerCheckpoint(playerid,1058.3973,-1445.5070,13.2364,5);
+		    CP[playerid] = 3;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1035.6870,-1407.1594,13.1585)) // Checkpoint 3
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 3) // Checkpoint 3
 		{
-			SetPlayerCheckpoint(playerid,1058.1282,-1412.7396,13.3948,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1035.2603,-1706.2277,13.2655,5);
+			CP[playerid] = 4;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1058.1282,-1412.7396,13.3948)) // Checkpoint 4
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 4) // Checkpoint 4
 		{
-			SetPlayerCheckpoint(playerid,1059.2937,-1435.7738,13.3568,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1283.5852,-1714.5251,13.2577,5);
+			CP[playerid] = 5;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1059.2937,-1435.7738,13.3568)) // Checkpoint 5
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 5) // Checkpoint 5
 		{
-			SetPlayerCheckpoint(playerid,1056.1156,-1456.7148,13.3670,5);
+			DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1295.5685,-1838.8075,13.2578,5);
+			CP[playerid] = 6;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1056.1156,-1456.7148,13.3670)) // Checkpoint 6
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 6) // Checkpoint 6
 		{
-			SetPlayerCheckpoint(playerid,1012.2074,-1438.6262,13.5469,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1623.6084,-1874.1854,13.2578,5);
+			CP[playerid] = 7;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1012.2074,-1438.6262,13.5469)) // Checkpoint 7
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 7) // Checkpoint 7
 		{
-			SetPlayerCheckpoint(playerid,1026.7972,-1443.0872,13.5546,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1691.7144,-1681.2491,13.2578,5);
+			CP[playerid] = 8;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1026.7972,-1443.0872,13.5546)) // Checkpoint 8
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 8) // Checkpoint 8
 		{
-			SetPlayerCheckpoint(playerid,1026.6116,-1433.3167,13.5469,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1783.3315,-1611.9913,13.2377,5);
+			CP[playerid] = 9;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1026.6116,-1433.3167,13.5469)) // Checkpoint 9
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 9) // Checkpoint 9
 		{
-			SetPlayerCheckpoint(playerid,1004.7498,-1439.7341,13.5469,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1824.5302,-1591.1809,13.2333,5);
+			CP[playerid] = 10;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,1004.7498,-1439.7341,13.5469)) // Checkpoint 10
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 10) // Checkpoint 10
 		{
-			SetPlayerCheckpoint(playerid,967.4974,-1443.5815,13.5041,5);
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1851.9956,-1303.2091,13.2624,5);
+			CP[playerid] = 11;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,5,967.4974,-1443.5815,13.5041)) // Checkpoint 12
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 11) // Checkpoint 11
 		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1817.2354,-1176.9016,23.5036,5);
+			CP[playerid] = 12;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 12) // Checkpoint 13
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1616.6484,-1158.9518,23.7728,5);
+			CP[playerid] = 13;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 13) // Checkpoint 14
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1549.0206,-1053.6720,23.4879,5);
+			CP[playerid] = 14;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 14) // Checkpoint 15
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1376.5190,-1032.3350,26.2899,5);
+			CP[playerid] = 15;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 15) // Checkpoint 16
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1144.1606,-1037.1768,31.6793,5);
+			CP[playerid] = 16;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 16) // Checkpoint 17
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1080.0674,-1116.3767,23.9516,5);
+			CP[playerid] = 17;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 17) // Checkpoint 18
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1056.2576,-1224.8196,16.7947,5);
+			CP[playerid] = 18;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 18) // Checkpoint 19
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,1055.7650,-1364.8551,13.2595,5);
+			CP[playerid] = 19;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 19) // Checkpoint 20
+		{
+		    DisablePlayerCheckpoint(playerid);
+			SetPlayerCheckpoint(playerid,963.298950,-1392.982055,12.7691,5);
+			CP[playerid] = 20;
+		}
+		else if(IsPlayerInCheckpoint(playerid) && CP[playerid] == 20) // Checkpoint 21
+		{
+		    DisablePlayerCheckpoint(playerid);
 		    new Float:Health;
 		    GetVehicleHealth(GetPlayerVehicleID(playerid), Health);
 		    if(Health > 900)
@@ -23774,8 +23861,6 @@ public OnPlayerEnterCheckpoint(playerid)
 				SendClientMessage(playerid, COLOR_LIGHTBLUE, "* Driving Center: You have totaled your vehicle, therefore you failed the test and we've confiscated your costs to repair the vehicle.");
 			}
 		}
-	}
- else DisablePlayerCheckpoint(playerid);
 	return 1;
 }
 
@@ -24756,7 +24841,6 @@ public OnPlayerUpdate(playerid)
 	    // Ping Update
 	    if(GetPlayerState(playerid) == PLAYER_STATE_SPECTATING)
 	    {
-	        new string[64];
             /*format(string,sizeof(string),"~n~~n~~n~~n~~n~~n~~n~~n~~r~%s's Ping: ~w~%d", RPN(Specid[playerid]), GetPlayerPing(Specid[playerid]));
 			GameTextForPlayer(playerid, string,1000, 3);*/
 	    }
@@ -26462,13 +26546,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					LicenseTest[playerid] = 1;
                  	SendClientMessage(playerid,COLOR_LIGHTBLUE,"* Drivers Center: You've paid $1000 for your driving test.");
                     GameTextForPlayer(playerid, "~r~Get to a DMV car to being your test!", 3500, 3);
+                    CP[playerid] = 1;
 				}
 
 				case 1: // Flying
 				{
 				    if(PlayerInfo[playerid][pFlyLic]) return SendClientMessage(playerid, COLOR_GREY, "You already have a flying license.");
-				    if(PlayerInfo[playerid][pMoney] < 20000) return SendClientMessage(playerid, COLOR_GREY,"You've insufficient funds. ($20,000)");
-	                GiveDodMoney(playerid, -20000);
+				    if(PlayerInfo[playerid][pMoney] < 10000) return SendClientMessage(playerid, COLOR_GREY,"You've insufficient funds. ($10,000)");
+	                GiveDodMoney(playerid, -10000);
 	                PlayerInfo[playerid][pFlyLic] = 1;
 	                SendClientMessage(playerid,COLOR_LIGHTBLUE,"* License Center: You've successfully bought a new flying license.");
 				}
@@ -26750,8 +26835,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		switch(listitem)
 		{
 			case 0: AddVehicleComponent(vehid,1010),CarmodDialog(playerid), PlayerPlaySound(playerid,1133,0.0,0.0,0.0);
-			case 1: ShowPlayerDialog(playerid,1112,DIALOG_STYLE_LIST,"Choose primary color:","White\nBlack\nOrange\nLight Blue\nDark Blue\nPurple\nRed\nDark Red\nGrey","Select","Cancle");
-			case 2: ShowPlayerDialog(playerid,1113,DIALOG_STYLE_LIST,"Choose a wheel:","Shadow\nMega\nRimshine\nWires\nClassic\nTwist\nCutter\nSwitch\nGrove\nImport\nDollar\nTrance\nAtomic\nAhab\nVirtual\nAcces\n{FF0000}Back","Select","Cancle");
+			case 1: ShowPlayerDialog(playerid,1112,DIALOG_STYLE_LIST,"Choose primary color:","White\nBlack~n~Orange\nLight Blue\nDark Blue\nPurple\nRed\nDark Red\nGrey","Select","Cancle");
+			case 2: ShowPlayerDialog(playerid,1113,DIALOG_STYLE_LIST,"Choose a wheel:","Shadow\nMega\nRimshine\nWires\nClassic\nTwist\nCutter\nSwitch\nGrove\nImport\nDollar\nTrance\nAtomic\nAhab\nVirtual~n~Acces\n{FF0000}Back","Select","Cancle");
 			case 3: AddVehicleComponent(vehid, 1086), PlayerPlaySound(playerid,1133,0.0,0.0,0.0), CarmodDialog(playerid);
 			case 4: AddVehicleComponent(vehid, 1087), PlayerPlaySound(playerid,1133,0.0,0.0,0.0), CarmodDialog(playerid);
 			case 5:
@@ -26770,7 +26855,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				else if(vehmd == 534)
 				{
-                    ShowPlayerDialog(playerid,1003,DIALOG_STYLE_LIST,"Choose one","Paintjob\nChrome\nSlamin\nFlame Sideskirt \nArches Sideskirt Roof\n{FF0000}Back","Select","Cancel");
+                    ShowPlayerDialog(playerid,1003,DIALOG_STYLE_LIST,"Choose one","Paintjob\nChrome\nSlamin\nFlame Sideskirt Arches Sideskirt Roof\n{FF0000}Back","Select","Cancel");
 				}
 				else if(vehmd == 496 || vehmd == 505 || vehmd == 516 || vehmd == 517 || vehmd == 518 || vehmd == 527 || vehmd == 529 || vehmd == 540 || vehmd == 546 || vehmd == 547 || vehmd == 549 || vehmd == 550 || vehmd == 551 || vehmd == 580 || vehmd == 585 || vehmd == 587 || vehmd == 589 || vehmd == 600 || vehmd == 603 || vehmd == 401 || vehmd == 410 || vehmd == 415 || vehmd == 418 || vehmd == 420 || vehmd == 436 || vehmd == 439 || vehmd == 458 || vehmd == 489 || vehmd == 491 || vehmd == 492)
 				{
@@ -32590,7 +32675,7 @@ stock SSSShowDialog(playerid, dialogid)
 		}
 		case 39: // License
 		{
-		    ShowPlayerDialog(playerid, 39, DIALOG_STYLE_LIST, "Official Licenses","Driving License (5000$)\nFlying License (20000$)", "Choose", "Cancel");
+		    ShowPlayerDialog(playerid, 39, DIALOG_STYLE_LIST, "Official Licenses","Driving License ($1000)\nFlying License ($10000)", "Choose", "Cancel");
 		}
 		case 40: // NYPD Lockers
 		{
@@ -33986,7 +34071,6 @@ public Tut1(playerid)
 	    SendClientMessage(playerid,COLOR_WHITE, "");
 	}
 	TextDrawShowForPlayer(playerid, TutorialTD);
-	new params[1];
     //cmd_hangup(playerid, params);
 	SetPlayerInterior(playerid, 0);
 	SetPlayerVirtualWorld(playerid, 94375);
@@ -34124,7 +34208,7 @@ public TutFinal(playerid)
 	// Starter Package
 	PlayerInfo[playerid][pNew] = 1;
 	PlayerInfo[playerid][pModel] = 299;
-	SetPlayerSkin(playerid, 208);
+	SetPlayerSkin(playerid, 299);
 	PlayerInfo[playerid][pFightStyle] = FIGHT_STYLE_NORMAL;
 	
 	return 1;
