@@ -7,6 +7,9 @@ main()
 	print("\n----------------------------------");
 	print("  This is a blank GameModeScript");
 	print("----------------------------------\n");
+	
+	//printf("GetVehicleComponentType %u",GetVehicleComponentType(1100));
+	
 }
 
 public OnGameModeInit()

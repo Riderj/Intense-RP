@@ -16,7 +16,7 @@
 //----------------------------------------------------------
 
 #define COLOR_WHITE 		0xFFFFFFFF
-#define COLOR_NORMAL_PLAYER 0xFFBB7777
+#define COLOR_NORMAL_PLAYER 0xFF4444FF
 
 #define CITY_LOS_SANTOS 	0
 #define CITY_SAN_FIERRO 	1
@@ -34,9 +34,6 @@ new Text:txtLosSantos;
 new Text:txtSanFierro;
 new Text:txtLasVenturas;
 
-new thisanimid=0;
-new lastanimid=0;
-
 //----------------------------------------------------------
 
 main()
@@ -51,7 +48,7 @@ main()
 public OnPlayerConnect(playerid)
 {
 	GameTextForPlayer(playerid,"~w~Grand Larceny",3000,4);
-  	SendClientMessage(playerid,COLOR_WHITE,"Welcome to {88AA88}G{FFFFFF}rand {88AA88}L{FFFFFF}arceny");
+  	SendClientMessage(playerid,COLOR_WHITE,"Welcome to Grand Larceny");
   	
   	// class selection init vars
   	gPlayerCitySelection[playerid] = -1;
@@ -59,24 +56,8 @@ public OnPlayerConnect(playerid)
 	gPlayerLastCitySelectionTick[playerid] = GetTickCount();
 
 	//SetPlayerColor(playerid,COLOR_NORMAL_PLAYER);
-
-	//Kick(playerid);
 	
-	/*
-	Removes vending machines
-	RemoveBuildingForPlayer(playerid, 1302, 0.0, 0.0, 0.0, 6000.0);
-	RemoveBuildingForPlayer(playerid, 1209, 0.0, 0.0, 0.0, 6000.0);
-	RemoveBuildingForPlayer(playerid, 955, 0.0, 0.0, 0.0, 6000.0);
-	RemoveBuildingForPlayer(playerid, 1775, 0.0, 0.0, 0.0, 6000.0);
-	RemoveBuildingForPlayer(playerid, 1776, 0.0, 0.0, 0.0, 6000.0);
-	*/
-	
-	/*
-	new ClientVersion[32];
-	GetPlayerVersion(playerid, ClientVersion, 32);
-	printf("Player %d reports client version: %s", playerid, ClientVersion);*/
-
- 	return 1;
+	return 1;
 }
 
 //----------------------------------------------------------
@@ -91,6 +72,10 @@ public OnPlayerSpawn(playerid)
 	TogglePlayerClock(playerid,0);
  	ResetPlayerMoney(playerid);
 	GivePlayerMoney(playerid, 30000);
+	
+	// if they ever return to class selection make them city
+	// select again first
+	gPlayerHasCitySelected[playerid] = 0;
 
 	if(CITY_LOS_SANTOS == gPlayerCitySelection[playerid]) {
  	    randSpawn = random(sizeof(gRandomSpawns_LosSantos));
@@ -133,7 +118,7 @@ public OnPlayerSpawn(playerid)
     
     GivePlayerWeapon(playerid,WEAPON_COLT45,100);
 	//GivePlayerWeapon(playerid,WEAPON_MP5,100);
-	TogglePlayerClock(playerid, 0);
+	//TogglePlayerClock(playerid, 1);
 
 	return 1;
 }
@@ -143,10 +128,6 @@ public OnPlayerSpawn(playerid)
 public OnPlayerDeath(playerid, killerid, reason)
 {
     new playercash;
-    
-    // if they ever return to class selection make them city
-	// select again first
-	gPlayerHasCitySelected[playerid] = 0;
     
 	if(killerid == INVALID_PLAYER_ID) {
         ResetPlayerMoney(playerid);
@@ -355,47 +336,18 @@ public OnGameModeInit()
 	EnableStuntBonusForAll(0);
 	DisableInteriorEnterExits();
 	SetWeather(2);
-	SetWorldTime(11);
-
-	UsePlayerPedAnims();
-	//ManualVehicleEngineAndLights();
+	
 	//LimitGlobalChatRadius(300.0);
 	
 	ClassSel_InitTextDraws();
 
 	// Player Class
-	AddPlayerClass(281,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(282,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(283,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(284,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(285,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(286,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(287,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(288,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(289,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(265,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(266,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(267,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(268,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(269,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(270,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
 	AddPlayerClass(1,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
 	AddPlayerClass(2,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(3,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(4,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(5,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(6,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(8,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(42,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(65,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	//AddPlayerClass(74,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(86,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(119,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
- 	AddPlayerClass(149,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(208,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(273,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	AddPlayerClass(289,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
-	
+ 	AddPlayerClass(269,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
+	AddPlayerClass(270,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
+	AddPlayerClass(271,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
+	AddPlayerClass(272,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
 	AddPlayerClass(47,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
 	AddPlayerClass(48,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
 	AddPlayerClass(49,1759.0189,-1898.1260,13.5622,266.4503,-1,-1,-1,-1,-1,-1);
@@ -473,8 +425,7 @@ public OnGameModeInit()
 public OnPlayerUpdate(playerid)
 {
 	if(!IsPlayerConnected(playerid)) return 0;
-	if(IsPlayerNPC(playerid)) return 1;
-
+	
 	// changing cities by inputs
 	if( !gPlayerHasCitySelected[playerid] &&
 	    GetPlayerState(playerid) == PLAYER_STATE_SPECTATING ) {
@@ -494,25 +445,11 @@ public OnPlayerUpdate(playerid)
 	    return 0;
 	}
 	
-	/* No jetpacks allowed
+	// No jetpacks allowed
 	if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK) {
 	    Kick(playerid);
 	    return 0;
-	}*/
-
-	/* For testing animations
-    new msg[128+1];
-	new animlib[32+1];
-	new animname[32+1];
-
-	thisanimid = GetPlayerAnimationIndex(playerid);
-	if(lastanimid != thisanimid)
-	{
-		GetAnimationName(thisanimid,animlib,32,animname,32);
-		format(msg, 128, "anim(%d,%d): %s %s", lastanimid, thisanimid, animlib, animname);
-		lastanimid = thisanimid;
-		SendClientMessage(playerid, 0xFFFFFFFF, msg);
-	}*/
+	}
 
 	return 1;
 }
