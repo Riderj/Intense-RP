@@ -4366,6 +4366,10 @@ HandlePlayerItemSelection(playerid, selecteditem)
 
 public OnPlayerConnect(playerid)
 {
+	new str[256];
+	format(str, sizeof(str), "%s has joined the server.", GetPlayerName(playerid));
+	SendClientMessageToAll(0xFFCC66,str);
+
 	new string[128];
 
     format(string,sizeof(string), "http://translate.google.com/translate_tts?q=%s has connected to the server", RPN(playerid));
